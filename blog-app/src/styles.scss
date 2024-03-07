@@ -9,15 +9,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=PT+Sans&family=Roboto:wght@400;500&display=swap');
 
 $colors: (
-  // Standars colors
-  black: #000,
-  white: #fff,
-  red: #f00,
-  blue: #00f,
+  // Standars colors  (c means color)
+  c_black: #000,
+  c_white: #fff,
+  c_red: #f00,
+  c_blue: #00f,
 
   // with opacity
-  black_with_opacity: #00000021,
-  white_with_opacity: #ffffffd9,
+  c_black_with_opacity: #000000d9,
+  c_white_with_opacity: #ffffffd9,
 
 );
 $fonts_size: (
@@ -31,6 +31,7 @@ $fonts_size: (
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: map-get($colors, c_black);
 }
 
 body {
