@@ -5,6 +5,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  // background: 
+  //   linear-gradient(100deg, #feb47b, #feb47b),
+  //   linear-gradient(200deg, #00ffcc, #00ffcc),
+  //   linear-gradient(300deg, #ff4e50, #ff4e50);
 }
 .navigation {
   width: 100%;
@@ -20,7 +24,7 @@
   z-index: 0;
 }
 .blogs-box {
-  min-height: 100vh;
+  min-height: 70vh;
 }
 .footer {
   width: 100%;
