@@ -1,4 +1,5 @@
-.navigation_menu {
+@import '../../styles.scss';
+.navigation-menu {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -7,14 +8,14 @@
   justify-content: center;
   gap: 2.5rem;
 }
-.nav_list {
+.nav-list {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
 
-  .nav_list_item {
+  .nav-list-item {
     margin: 0 1rem;
     opacity: 1;
     transition: all .3s ease-in-out;
@@ -27,4 +28,23 @@
       }
     }
   }
+}
+
+.account-options {
+  display: none;
+  position: absolute;
+  background-color: map-get($colors, c_white);
+  padding: 1rem;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: -10px;
+  box-shadow: 3px 3px 8px map-get($colors, c-black-with-opacity);
+  transform: translateX(-15px);
+}
+.account:hover .account-options {
+  display: block;
+}
+
+#account-trigger {
+  cursor: pointer;
 }
