@@ -44,6 +44,13 @@
 .account:hover .account-options {
   display: block;
 }
+.account-option-list {
+  margin: 0.5rem 0;
+  opacity: 1;
+  &:hover {
+    opacity: .8;
+  }
+}
 
 #account-trigger {
   cursor: pointer;

@@ -21,7 +21,7 @@
   justify-content: center;
 
   input[type='email'], input[type='password'] {
-    margin: 0.1rem;
+    margin: 0.5rem;
     padding: .4rem;
     border-radius: 20px;
     overflow: hidden;
@@ -30,4 +30,15 @@
       border: 1px solid map-get($colors, c-black-with-opacity);
     }
   }
+}
+
+#login-email {
+  margin: 2rem 0 0 0;
+}
+#submit-button {
+  padding: 1rem;
+  background: inherit;
+  border-radius: 45px;
+  overflow: hidden;
+  outline: none;
 }
