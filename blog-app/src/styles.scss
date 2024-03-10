@@ -25,6 +25,8 @@ $fonts_size: (
   small: 16px,
   normal: 20px,
   big: 24px, 
+  header-small: 24px,
+  header-normal: 28px,
 );
 
 * {
@@ -40,6 +42,7 @@ body {
   font-size: map-get($fonts_size, normal);
 }
 h1, h2, h3, h4, h5, h6 {
+  font-size: map-get($fonts-size, header-normal);
   font-family: 'Montserrat', sans-serif;
 }
 a{
@@ -48,4 +51,15 @@ a{
 }
 ul, ol, li {
   list-style-type: none;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: map-get($fonts_size, small);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: map-get($fonts-size, header-small);
+  }
 }
