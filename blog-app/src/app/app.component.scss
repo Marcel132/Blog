@@ -1,0 +1,40 @@
+@import '../styles.scss';
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // background: 
+  //   linear-gradient(100deg, #feb47b, #feb47b),
+  //   linear-gradient(200deg, #00ffcc, #00ffcc),
+  //   linear-gradient(300deg, #ff4e50, #ff4e50);
+}
+.navigation {
+  width: 100%;
+  height: 10vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: map-get($colors, c_navigation);
+  box-shadow: 3px 3px 8px map-get($colors, c_black_with_opacity)
+}
+.blogs-box {
+  min-height: 80vh;
+}
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: map-get($colors, c_white);
+  box-shadow: 3px 3px 8px map-get($colors, c_black_with_opacity);
+
+  ul li{
+    margin: 1rem;
+  }
+}

@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// 
+// There are all usually classes and arrays 
+// 
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=PT+Sans&family=Roboto:wght@400;500&display=swap');
+
+$colors: (
+  // Standars colors  (c means color)
+  c_black: #000000,
+  c_white: #ffffff,
+  c_red: #f00,
+  c_blue: #00f,
+
+  // with opacity
+  c_black_with_opacity: #000000d9,
+  c_white_with_opacity: #ffffffd9,
+
+  c_navigation: #fafafa,
+  c_navigation_with_opacity: #fafafa9e,
+
+);
+$fonts_size: (
+  tiny: 12px,
+  small: 16px,
+  normal: 20px,
+  big: 24px, 
+  header-small: 24px,
+  header-normal: 28px,
+);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: map-get($colors, c_black);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: map-get($fonts_size, normal);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: map-get($fonts-size, header-normal);
+  font-family: 'Montserrat', sans-serif;
+}
+a{
+  text-decoration: none;
+}
+ul, ol, li {
+  list-style-type: none;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: map-get($fonts_size, small);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: map-get($fonts-size, header-small);
+  }
+}
