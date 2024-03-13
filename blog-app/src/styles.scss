@@ -19,6 +19,9 @@ $colors: (
   c_black_with_opacity: #000000d9,
   c_white_with_opacity: #ffffffd9,
 
+  c_navigation: #fafafa,
+  c_navigation_with_opacity: #fafafa9e,
+
 );
 $fonts_size: (
   tiny: 12px,
@@ -46,7 +49,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 a{
-  color: inherit;
   text-decoration: none;
 }
 ul, ol, li {

@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import '../../../styles.scss';
 .navigation-menu {
   width: 100%;
   display: flex;
@@ -31,12 +31,12 @@
 .account-options {
   display: none;
   position: absolute;
-  background-color: map-get($colors, c_white);
+  background-color: map-get($colors, c_navigation);
   padding: 1rem;
   z-index: 1;
   overflow: hidden;
   border-radius: -10px;
-  box-shadow: 3px 3px 8px map-get($colors, c-black-with-opacity);
+  box-shadow: 3px 3px 8px map-get($colors, c_black_with_opacity);
   transform: translateX(-15px);
 }
 .account:hover .account-options {
