@@ -3,13 +3,14 @@ import { RouterModule } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterModule,
     NavigationComponent,
-    FooterComponent,
+    FooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
