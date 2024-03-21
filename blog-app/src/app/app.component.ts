@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { NavigationComponent } from './components/template/navigation/navigation.component';
+import { FooterComponent } from './components/template/footer/footer.component';
 
 
 @Component({
