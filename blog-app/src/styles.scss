@@ -37,9 +37,9 @@ $blog-app-theme: mat.define-light-theme((
 
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
-// 
-// There are all usually classes and arrays 
-// 
+//
+// There are all usually classes and arrays
+//
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 
@@ -64,7 +64,7 @@ $fonts_size: (
   tiny: 12px,
   small: 16px,
   normal: 20px,
-  big: 24px, 
+  big: 24px,
   header-small: 24px,
   header-normal: 28px,
 );
@@ -92,9 +92,7 @@ ul, ol, li {
   list-style-type: none;
 }
 
-
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   body {
     font-size: map-get($fonts_size, small);
   }
@@ -102,5 +100,3 @@ ul, ol, li {
     font-size: map-get($fonts-size, header-small);
   }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

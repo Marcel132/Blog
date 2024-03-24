@@ -3,7 +3,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  height: 100%;
   gap: 2rem;
 }
 .nav-list {
@@ -19,7 +20,7 @@
     transition: all .3s ease-in-out;
     &:hover{
       opacity: .8;
-      transform: rotate(-4deg);
+      transform: scale(1.5);
 
       &:first-child{
         transform: rotate(4deg);
@@ -28,6 +29,9 @@
   }
 }
 
+.nav-img {
+  width: 150%;
+}
 .account-options {
   display: none;
   position: absolute;
@@ -35,31 +39,60 @@
   padding: 1rem;
   z-index: 1;
   overflow: hidden;
-  border-radius: -10px;
+  border-radius: 25px 25px 25px 25px;
   box-shadow: 3px 3px 8px map-get($colors, c_black_with_opacity);
-  transform: translateX(-15px);
+  transform: translateX(-10%);
 }
 .account:hover .account-options {
   display: block;
 }
 .account-option-list {
-  margin: 0.5rem 0;
+  width: 150%;
+  margin: .5rem 1.5rem .5rem 0;
   opacity: 1;
   &:hover {
     opacity: .8;
   }
+
 }
 
 #account-trigger {
   cursor: pointer;
 }
 
+@media screen and (max-width: 1120px) {
+  .account-options {
+    transform: translateX(-30%);
+  }
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 870px) {
   .navigation-menu {
     gap: 1rem;
   }
   .logo {
     display: none;
   }
+  .account-options {
+    border-radius: 25px 25px 25px 25px;
+    transform: translateX(-40%);
+  }
 }
+@media screen and (max-width: 600px) {
+  .account-options {
+    transform: translateX(-60%);
+  }
+}
+@media screen and (max-width: 450px) {
+  .account-options {
+    border-radius: 25px 10px 25px 25px;
+    transform: translateX(-80%);
+  }
+}
+@media screen and (max-width: 370px) {
+  .account-options {
+    border-radius: 25px 10px 25px 25px;
+    transform: translateX(-100%);
+  }
+}
+
