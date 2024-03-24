@@ -20,7 +20,7 @@
     transition: all .3s ease-in-out;
     &:hover{
       opacity: .8;
-      transform: scale(1.5);
+      transform: rotate(-4deg);
 
       &:first-child{
         transform: rotate(4deg);
