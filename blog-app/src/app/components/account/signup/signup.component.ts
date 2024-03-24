@@ -1,39 +1,20 @@
 import { Component } from '@angular/core'
-import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Router} from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AccountService } from '../account.service'
+import { FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-  ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+  constructor(private accountService: AccountService){ }
 
-  signupForm = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required]
-  })
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private router: Router) { }
+  get signupForm(): FormGroup {
+    return this.accountService.signupForm;
+  }
 
-  async onSubmit() {
-    const email = this.signupForm.value.email
-    const password = this.signupForm.value.password
-    if (email && password) {
-      try {
-        await this.afAuth.createUserWithEmailAndPassword(email, password);
-        this.router.navigate(['/'])
-        alert('Successfully signed up!')
-      } catch (error) {
-        // Handle signup error here
-      }
-    } else {
-      // Handle missing email or password here
-    }
+  onSubmit() {
+    this.accountService.onSubmit()
   }
 }

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from '../../account/login/login.component';
-import { SignupComponent } from '../../account/signup/signup.component';
 import { CommonModule } from '@angular/common';
+import { AccountModule } from '../../account/account.module';
 
 @Component({
   selector: 'app-navigation',
@@ -10,8 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     RouterModule,
-    LoginComponent,
-    SignupComponent
+    AccountModule
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
