@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, RouterModule, Router } from '@angular/router';
 import { NavigationComponent } from './components/template/navigation/navigation.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 
@@ -16,5 +16,14 @@ import { FooterComponent } from './components/template/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'blog-app';
+  constructor(private router: Router) {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return
+      }
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0)
+      }
+    })
+  }
 }
