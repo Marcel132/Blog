@@ -2,6 +2,9 @@
   <div class='form-box'>
     <form [formGroup]='signupForm' (ngSubmit)='onSubmit()' class='form'>
       <h2>Zarejestruj się</h2>
+
+      <!-- ############## EMAIL ############## -->
+
       <input
       type='email'
       name='email'
@@ -13,10 +16,13 @@
       <div class="error-box"  *ngIf="submitted && email?.errors?.['required']">
         Wymagany Email
       </div>
-      <!-- If the emil is invalid-->
+      <!-- If the email is invalid-->
       <div class="error-box"  *ngIf="email?.errors?.['invalidEmail']">
         Błędny Email
       </div>
+
+      <!-- ############## PASSWORD ############## -->
+
       <input
       type='password'
       name='password'

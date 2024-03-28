@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { AccountService } from '../account.service'
-import { FormGroup} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -26,8 +26,7 @@ export class SignupComponent {
   }
 
 
-
   onSubmit() {
-    this.accountService.onSubmit()
+    this.accountService.onSubmitSignup()
   }
 }
