@@ -10,11 +10,10 @@ import { FormGroup } from '@angular/forms';
 export class LoginComponent {
   constructor(private accountService: AccountService){ }
 
+  // Here we are using getters to access the email and password form controls from account.service
   get LoginForm(): FormGroup {
     return this.accountService.signupForm;
   }
-  // Email and Passoword
-  // Here we are using getters to access the email and password form controls
   get submitted() {
     return this.accountService.submitted
   }

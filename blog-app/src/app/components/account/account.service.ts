@@ -52,13 +52,18 @@ export class AccountService {
     password: ['', [Validators.required, this.validatePassword]],
   })
 
+  // ---------------------
   // For Signup.component
+  // ---------------------
   async onSubmitSignup() {
+    // Change the variable on true, when user click signup button
     this.submitted = true
     if (this.signupForm.valid) {
+      // Check if email and password are valid
       const email = this.signupForm.value.email
       const password = this.signupForm.value.password
 
+      // If data is valid, create a new user in database
       if(email && password){
         try {
           await this.afAuth.createUserWithEmailAndPassword(email, password)
@@ -79,6 +84,7 @@ export class AccountService {
 
   // For Login.component
   async onSubmitLogin() {
+    // Change the variable on true, when user click signup button
     this.submitted = true
   }
 }
