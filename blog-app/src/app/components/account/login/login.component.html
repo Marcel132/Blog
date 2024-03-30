@@ -1,10 +1,48 @@
 <div class="login-container">
   <div class="form-box">
-    <form class="form">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" class="form">
       <h2>Zaloguj się</h2>
-      <input type="email" name="email" id="login-email" placeholder="Podaj Email">
-      <input type="password" name="password" id="login-password" placeholder="Podaj Hasło">
-      <button type="submit" id="submit-button">Zaloguj się</button>
+
+      <!-- ############## EMAIL ############## -->
+
+      <input
+      type="email"
+      name="email"
+      id="login-email"
+      placeholder="Podaj Email"
+      formControlName="email"
+      >
+      <!-- If there is no email -->
+      <div class="error-box"  *ngIf="submitted && email?.errors?.['required']">
+        Wymagany Email
+      </div>
+      <!-- If the email is invalid-->
+      <div class="error-box"  *ngIf="email?.errors?.['invalidEmail']">
+        Błędny Email
+      </div>
+
+      <!-- ############## PASSWORD ############## -->
+
+      <input
+      type="password"
+      name="password"
+      id="login-password"
+      placeholder="Podaj Hasło"
+      formControlName="password"
+      >
+      <!-- If there is no password -->
+      <div class="error-box"  *ngIf="submitted && password?.errors?.['required']">
+        Wymagane Hasło
+      </div>
+      <!-- If password includes an invalid word-->
+      <div class="error-box" *ngIf="password?.errors?.['invalidPassword']">
+        Hasło nie może zawierać niektórych znaków
+      </div>
+      <!-- If password doesn's includes 8 word -->
+      <div class="error-box" *ngIf="submitted && password?.errors?.['noLetters']">
+        Hasło musi mieć min. 8 znaków
+      </div>
+      <input type="submit" value='Zaloguj się' id="submit-button">
     </form>
   </div>
 </div>

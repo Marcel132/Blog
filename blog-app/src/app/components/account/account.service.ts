@@ -2,24 +2,40 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators  } from '@angular/forms';
 import { Router} from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase  } from '@angular/fire/compat/database';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
+  constructor(
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private db: AngularFireDatabase,
+    ) { }
+
+  // Check if email is valid
   validateEmail(control: AbstractControl) {
+    // Table with all invalid characters
     const validationEmailWords = ['/', ',', '!', '$', '%', '^', '&', '+', '=', '(', ')', '|', '{', '}', '[', ']', "'", '"', '<', '>', '?']
+    // Check if email includes table: validationEmailWords
     if(control.value && validationEmailWords.some(word => control.value.includes(word))){
       return {invalidEmail: true}
     }
     return null
   }
+  // Check if password is correct
   validatePassword(control: AbstractControl) {
-    const validationPasswordWords = ['/', ',', '!', '$', '%', '^', '&', '+', '=', '(', ')', '|', '{', '}', '[', ']', "'", '"', '<', '>', '?', '@']
-    if (control.value && validationPasswordWords.some(word => control.value.includes(word))) {
+    // Table with all invalid characters
+    const validationPasswordCharacters = ['/', ',', '!', '$', '%', '^', '&', '+', '=', '(', ')', '|', '{', '}', '[', ']', "'", '"', '<', '>', '?', '@']
+    // Check if password includes table: validationPasswordCharacters
+    if (control.value && validationPasswordCharacters.some(word => control.value.includes(word))) {
       return {invalidPassword: true}
     }
+    // Check if password is less than 8 characters
     if (control.value && control.value.length < 8) {
       return {noLetters: true}
     }
@@ -31,9 +47,13 @@ export class AccountService {
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
   })
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private router: Router) { }
+  LoginForm = this.fb.group({
+    email: ['', [Validators.required, this.validateEmail]],
+    password: ['', [Validators.required, this.validatePassword]],
+  })
 
-  async onSubmit() {
+  // For Signup.component
+  async onSubmitSignup() {
     this.submitted = true
     if (this.signupForm.valid) {
       const email = this.signupForm.value.email
@@ -55,5 +75,10 @@ export class AccountService {
     else if(this.signupForm.invalid){
 
     }
+  }
+
+  // For Login.component
+  async onSubmitLogin() {
+    this.submitted = true
   }
 }

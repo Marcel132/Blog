@@ -28,16 +28,21 @@
     border-bottom: 1px solid map-get($colors, c_black_with_opacity);
     overflow: hidden;
   }
+  input[type='email'] {
+    margin: 2rem 0.5rem 0.5rem 0.5rem;
+  }
+  input[type='submit'] {
+    margin: 1rem 0 0 0;
+    padding: 1rem;
+    background: inherit;
+    border-radius: 45px;
+    overflow: hidden;
+    outline: none;
+  }
+}
+.error-box{
+  font-size: map-get($fonts_size, small);
+  font-style: oblique;
+  margin: 0.2rem;
 }
 
-#login-email {
-  margin: 2rem 0 0 0;
-}
-#submit-button {
-  margin: 1rem 0 0 0;
-  padding: 1rem;
-  background: inherit;
-  border-radius: 45px;
-  overflow: hidden;
-  outline: none;
-}
