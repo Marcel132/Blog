@@ -17,11 +17,11 @@ export class AccountService {
   }
   validatePassword(control: AbstractControl) {
     const validationPasswordWords = ['/', ',', '!', '$', '%', '^', '&', '+', '=', '(', ')', '|', '{', '}', '[', ']', "'", '"', '<', '>', '?', '@']
-    if (control.value && control.value.length < 8) {
-      return {noLetters: true}
-    }
     if (control.value && validationPasswordWords.some(word => control.value.includes(word))) {
       return {invalidPassword: true}
+    }
+    if (control.value && control.value.length < 8) {
+      return {noLetters: true}
     }
     return null
   }
