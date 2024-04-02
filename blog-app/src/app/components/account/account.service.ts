@@ -83,8 +83,21 @@ export class AccountService {
   }
 
   // For Login.component
-  async onSubmitLogin() {
+  async onSubmitLogin(email: string, password: string) {
     // Change the variable on true, when user click signup button
     this.submitted = true
+    this.afAuth.signInWithEmailAndPassword(email, password)
+    .then((Credential) => {
+      // Signed in
+      let user = Credential.user;
+      if (user) {
+        console.log(user.email); // prints the email of the logged in user
+      }
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
   }
 }

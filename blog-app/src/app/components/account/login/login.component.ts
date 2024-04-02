@@ -23,9 +23,10 @@ export class LoginComponent {
   get password() {
     return this.LoginForm.get('password');
   }
-
-
+  
   onSubmit() {
-    this.accountService.onSubmitLogin()
+    const emailValue = this.email?.value as string;
+    const passwordValue = this.password?.value as string;
+    this.accountService.onSubmitLogin(emailValue, passwordValue);
   }
 }
