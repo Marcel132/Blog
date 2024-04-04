@@ -1,6 +1,6 @@
 <div class="login-container">
   <div class="form-box">
-    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" class="form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
       <h2>Zaloguj się</h2>
 
       <!-- ############## EMAIL ############## -->
@@ -42,7 +42,13 @@
       <div class="error-box" *ngIf="submitted && password?.errors?.['noLetters']">
         Hasło musi mieć min. 8 znaków
       </div>
-      <input type="submit" value='Zaloguj się' id="submit-button">
+
+      <!-- Invalid data  -->
+      <div class="error-box" *ngIf="submitted && invalidEmailOrPassword">
+        Błędy Email lub Hasło
+      </div>
+
+      <input type="submit" value='Zaloguj się' id="submit-button" [disabled]="loginForm.invalid">
     </form>
   </div>
 </div>

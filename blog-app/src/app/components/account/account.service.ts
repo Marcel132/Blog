@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators  } from '@angular/forms';
-import { Router} from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase  } from '@angular/fire/compat/database';
+import { Injectable } from '@angular/core'
+import { AbstractControl, FormBuilder, Validators  } from '@angular/forms'
+import { Router} from '@angular/router'
+import { AngularFireAuth } from '@angular/fire/compat/auth'
+import { AngularFireDatabase  } from '@angular/fire/compat/database'
 
 
 @Injectable({
@@ -43,11 +43,12 @@ export class AccountService {
   }
 
   submitted = false
+  invalidEmailOrPassword = false
   signupForm = this.fb.group({
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
   })
-  LoginForm = this.fb.group({
+  loginForm = this.fb.group({
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
   })
@@ -70,15 +71,10 @@ export class AccountService {
           this.router.navigate(['/'])
           console.log("User created")
         } catch (error) {
-          this.router.navigate(['/signup'])
+          this.invalidEmailOrPassword = true
           console.log(error)
         }
-      } else {
-
       }
-    }
-    else if(this.signupForm.invalid){
-
     }
   }
 
@@ -89,15 +85,17 @@ export class AccountService {
     this.afAuth.signInWithEmailAndPassword(email, password)
     .then((Credential) => {
       // Signed in
-      let user = Credential.user;
+      let user = Credential.user
       if (user) {
-        console.log(user.email); // prints the email of the logged in user
+        this.router.navigate(['/'])
+        console.log(user.email + " is logged") // prints the email of the logged in user
       }
     })
     .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-    });
+      this.invalidEmailOrPassword = true
+      let errorCode = error.code
+      let errorMessage = error.message
+      console.log(errorCode, errorMessage)
+    })
   }
 }

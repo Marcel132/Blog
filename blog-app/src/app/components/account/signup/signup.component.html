@@ -42,7 +42,11 @@
       <div class="error-box" *ngIf="submitted && password?.errors?.['noLetters']">
         Hasło musi mieć min. 8 znaków
       </div>
-      <input type='submit' value='Zarejestruj się'  id='submit-button'>
+      <!-- Invalid data  -->
+      <div class="error-box" *ngIf="submitted && invalidEmailOrPassword">
+        Taki Email już istnieje!
+      </div>
+      <input type='submit' value='Zarejestruj się'  id='submit-button' [disabled]="signupForm.invalid">
     </form>
   </div>
 </div>
