@@ -1,27 +1,14 @@
-# BlogApp
+# Blog
+Github: url('https://github.com/Marcel132/Blog')
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+### PL:
+  Jest to projekt, który zakłada stworzenie aplikacji blogowej przy użyciu Angulara. Podczas tworzenia projektu korzystam z preprocesora SCSS oraz bazy danych firebase. Tworząc projekt nauczyłem się korzystać z komponentów i modułów w angularze. Sprawne korzystanie z narzędzi (VSC, itp.) oraz dokumentacji (dokumentacja angulara oraz firebase) pomogło przy tworzeniu projektu.
 
-## Development server
+### ENG: 
+  This is a project that I created a blog application using Angular. To create this blog I used the SCSS preprocessor and the Firebase database. By creating this project i learned how to use a components and modules in angular. I effective used a tools (VSC, etc.) and documentation(firebase and angular documentation) to create this site.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Branches 
+#### Version 0.1 
+  Version 0.1 includes creating a template with components(navigation, footer, social media, policy and account - login and signup), modules and routing between components.
+#### Version 0.2 
+  Version 0.2 includes creating a firebase and connect it with account.service.ts and app.module.ts. In this version I created a login and signup forms that create a user account or logged him into the Firebase account
