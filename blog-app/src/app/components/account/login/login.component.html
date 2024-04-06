@@ -1,6 +1,6 @@
 <div class="login-container">
   <div class="form-box">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+    <form  class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" (input)='clearErrors()'>
       <h2>Zaloguj się</h2>
 
       <!-- ############## EMAIL ############## -->
