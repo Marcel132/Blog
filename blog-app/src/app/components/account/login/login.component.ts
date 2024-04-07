@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core'
-import { AccountService } from '../account.service'
+import { AccountService } from '../../../service/account.service'
 import { FormGroup } from '@angular/forms'
 
 @Component({

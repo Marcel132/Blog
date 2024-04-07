@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core'
-import { AccountService } from '../account.service'
+import { AccountService } from '../../../service/account.service'
 import { FormGroup } from '@angular/forms'
 
 @Component({
@@ -30,6 +30,8 @@ export class SignupComponent implements OnDestroy{
   }
 
   onSubmit() {
-    this.accountService.onSubmitSignup()
+    if (this.email && this.password) {
+      this.accountService.onSubmitSignup(this.email.value, this.password.value);
+    }
   }
 }
