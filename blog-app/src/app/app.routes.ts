@@ -5,13 +5,17 @@ import { SocialmediaComponent } from './components/other/socialmedia/socialmedia
 import { PolicyComponent } from './components/other/policy/policy.component';
 import { AboutUsComponent } from './components/other/about-us/about-us.component';
 import { RegulationsComponent } from './components/other/regulations/regulations.component';
+import { DashboardComponent } from './components/other/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/other/admin-dashboard/admin-dashboard.component';
 
 
 export const routes: Routes = [
   {path: 'account/login', component: LoginComponent},
   {path: 'account/signup', component: SignupComponent},
+  {path: 'account/dashboard', component: DashboardComponent},
+  {path: 'account/dashboard/admin', component: AdminDashboardComponent},
   {path: 'socialmedia', component: SocialmediaComponent},
   {path: 'policy', component: PolicyComponent},
   {path: 'about-us', component: AboutUsComponent},
-  {path: 'regulations', component: RegulationsComponent}
+  {path: 'regulations', component: RegulationsComponent},
 ];

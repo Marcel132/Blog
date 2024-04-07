@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AccountModule } from '../../account/account.module';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-navigation',
@@ -16,9 +17,10 @@ import { AccountModule } from '../../account/account.module';
 })
 export class NavigationComponent implements OnInit {
   user: any;
+  isAdmin: boolean = true
   userEmail: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
     ngOnInit() {
       if (typeof(Storage) !== "undefined") {
         const userData = localStorage.getItem('user');
@@ -33,8 +35,9 @@ export class NavigationComponent implements OnInit {
         console.log('Local storage is not supported by your browser.');
       }
     }
-  LogOutButton() {
+  LogoutButton() {
+    this.router.navigate(['/']);
     localStorage.clear();
-    window.location.reload();
+    setTimeout(() => {window.location.reload()}, 1000)
   }
 }
