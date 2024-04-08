@@ -51,6 +51,8 @@
   width: 150%;
   margin: .5rem 1.5rem .5rem 0;
   opacity: 1;
+  padding-bottom: 0.4rem;
+
   &:hover {
     opacity: .8;
   }
@@ -60,10 +62,16 @@
   max-width: 170px;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid map-get($colors, c_black_with_opacity);
 
   p{
     padding-left: 100%;
-    animation: guest 10s linear infinite;
+    animation: guest 6s linear infinite;
+    &:hover{
+      opacity: .8;
+      animation-play-state: paused;
+    }
   }
 
   @keyframes guest {

@@ -66,7 +66,7 @@ export class AccountService {
           this.sessionService.set('user', user)
           this.router.navigate(['/'])
           console.log(user + ' signup')
-          setTimeout(() => {window.location.reload()}, 2000)
+          setTimeout(() => {window.location.reload()}, 500)
         }
         else {
           console.log("Cannot signup")
@@ -120,7 +120,7 @@ export class AccountService {
         // console.log(this.sessionService.get('user'))
         // console.log(user.email + " is logged")
       }
-      setTimeout(() => {window.location.reload()}, 2000)
+      setTimeout(() => {window.location.reload()}, 500)
     })
     .catch((error) => {
       this.invalidEmailOrPassword = true
