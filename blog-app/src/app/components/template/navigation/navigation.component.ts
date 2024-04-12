@@ -47,6 +47,6 @@ export class NavigationComponent implements OnInit {
   LogoutButton() {
     this.router.navigate(['/'])
     localStorage.clear()
-    setTimeout(() => {window.location.reload()}, 1000)
+    setTimeout(() => {window.location.reload()}, 100)
   }
 }

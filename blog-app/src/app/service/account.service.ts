@@ -1,8 +1,11 @@
+// Here are every function that is using to control the account of the user
+
 import { Injectable } from '@angular/core'
 import { AbstractControl, FormBuilder, Validators  } from '@angular/forms'
 import { Router} from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { SessionService } from './session.service'
+import { Observable } from 'rxjs'
 
 
 @Injectable({
@@ -66,7 +69,7 @@ export class AccountService {
           this.sessionService.set('user', user)
           this.router.navigate(['/'])
           console.log(user + ' signup')
-          setTimeout(() => {window.location.reload()}, 500)
+          setTimeout(() => {window.location.reload()}, 100)
         }
         else {
           console.log("Cannot signup")
@@ -117,10 +120,8 @@ export class AccountService {
       if (user) {
         this.sessionService.set('user', user)
         this.router.navigate(['/'])
-        // console.log(this.sessionService.get('user'))
-        // console.log(user.email + " is logged")
       }
-      setTimeout(() => {window.location.reload()}, 500)
+      setTimeout(() => {window.location.reload()}, 100)
     })
     .catch((error) => {
       this.invalidEmailOrPassword = true
@@ -129,4 +130,27 @@ export class AccountService {
       console.log(errorCode, errorMessage)
     })
   }
+
+  async changePassword() {
+    const data = this.sessionService.get('user')
+    let email = data.email
+      this.afAuth.sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('Email sent')
+      })
+  }
+  async deleteUserAccount() {
+    const user = await this.afAuth.currentUser;
+    if(user) {
+      user.delete().then(() => {
+        this.sessionService.clear()
+        this.router.navigate(['/'])
+        setTimeout(() => {window.location.reload()}, 100)
+        console.log('User deleted successfully');
+      }).catch((error) => {
+        console.error('Error deleting user', error);
+      });
+    }
+  }
+
 }

@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2>Konto</h2>
+  </div>
+  <div class="dashbord-content">
+    <div class="user-data"><p>Nazwa użytkownika: {{userEmail}}</p></div>
+    <div class="user-data"><button type="submit" (click)="changePassword()">Zmiana Hasła</button></div>
+    <div class="user-data"><button type="submit" (click)="deleteUserAccount()">Usuń Konto</button></div>
+  </div>
+
+</div>
