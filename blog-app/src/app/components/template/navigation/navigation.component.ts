@@ -11,7 +11,7 @@ import { User } from '../../../interface/isAdmin.user'
   imports: [
     CommonModule,
     RouterModule,
-    AccountModule
+    AccountModule,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',

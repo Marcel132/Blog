@@ -7,9 +7,12 @@ import { AboutUsComponent } from './components/other/about-us/about-us.component
 import { RegulationsComponent } from './components/other/regulations/regulations.component';
 import { DashboardComponent } from './components/other/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/other/admin-dashboard/admin-dashboard.component';
+import { PostsComponent } from './components/other/posts/posts.component';
 
 
 export const routes: Routes = [
+  {path: '', redirectTo: '/posts', pathMatch: 'full'}, // Default route path is posts
+  {path: 'posts', component: PostsComponent},
   {path: 'account/login', component: LoginComponent},
   {path: 'account/signup', component: SignupComponent},
   {path: 'account/dashboard', component: DashboardComponent},

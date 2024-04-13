@@ -5,7 +5,6 @@ import { AbstractControl, FormBuilder, Validators  } from '@angular/forms'
 import { Router} from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { SessionService } from './session.service'
-import { Observable } from 'rxjs'
 
 
 @Injectable({

@@ -1,0 +1,21 @@
+@import '../../../../styles.scss';
+.posts-container{
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+}
+.posts {
+  width: 250px;
+  height: 250px;
+  margin: .7rem;
+  padding: .8rem;
+  border: 1px solid map-get($colors, c_black);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
