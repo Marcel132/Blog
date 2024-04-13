@@ -11,8 +11,8 @@ import { PostsComponent } from './components/other/posts/posts.component';
 
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/posts', pathMatch: 'full'}, // Default route path is posts
-  {path: 'posts', component: PostsComponent},
+  // {path: '', redirectTo: '', pathMatch: 'full'}, // Default route path is posts
+  {path: '', component: PostsComponent},
   {path: 'account/login', component: LoginComponent},
   {path: 'account/signup', component: SignupComponent},
   {path: 'account/dashboard', component: DashboardComponent},
