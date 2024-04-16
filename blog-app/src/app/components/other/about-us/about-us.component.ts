@@ -4,7 +4,14 @@ import { Component } from '@angular/core';
   selector: 'app-about-us',
   standalone: true,
   imports: [],
-  templateUrl: './about-us.component.html',
+  template: `
+  <div class="f-container">
+    <div class="f-wrapper">
+
+    </div>
+  </div>
+
+  `,
   styleUrl: './about-us.component.scss'
 })
 export class AboutUsComponent {

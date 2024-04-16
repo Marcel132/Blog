@@ -19,8 +19,8 @@
         <li class="account-option-list"><a routerLink='/account/signup'>Zarejestruj się</a></li>
       </div>
       <div class="option-list-user" *ngIf="userEmail != 'Gość'">
-        <li class="account-option-list"><a routerLink='/account/dashboard'>Konto</a></li>
-        <li class="account-option-list" *ngIf='isAdmin == true'><a routerLink='/account/dashboard/admin'>Admin</a></li>
+        <li class="account-option-list"><a routerLink='/dashboard'>Konto</a></li>
+        <li class="account-option-list" *ngIf='isAdmin == true'><a routerLink='/admin'>Admin</a></li>
         <li class="account-option-list"><a (click)="LogoutButton()">Wyloguj się</a></li>
       </div>
     </ul>

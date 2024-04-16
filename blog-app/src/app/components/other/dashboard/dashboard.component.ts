@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../../service/account.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -13,6 +16,7 @@ export class DashboardComponent {
   constructor(private accountService: AccountService){ }
 
   userEmail: string = ''
+  deletingUserError = this.accountService.deletingUserError
 
   ngOnInit() {
     if(typeof(Storage) !== 'undefined'){

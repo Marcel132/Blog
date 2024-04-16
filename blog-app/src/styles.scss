@@ -21,6 +21,7 @@ $colors: (
 );
 $fonts_size: (
   tiny: 12px,
+  big-tiny: 14px,
   small: 16px,
   normal: 20px,
   big: 24px,
@@ -28,6 +29,30 @@ $fonts_size: (
   header-small: 24px,
   header-normal: 28px,
 );
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ------------- Classes for styling other components -------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+
+.f-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.f-wrapper {
+  width: 80%;
+  margin: 7rem auto;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
+  background-color: map-get($colors, c_white);
+}
 
 * {
   padding: 0;
@@ -43,7 +68,8 @@ body {
 }
 h1, h2, h3, h4, h5, h6 {
   font-size: map-get($fonts-size, header-normal);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 a{
   text-decoration: none;
@@ -59,5 +85,13 @@ ul, ol, li {
   }
   h1, h2, h3, h4, h5, h6 {
     font-size: map-get($fonts-size, header-small);
+  }
+  p{
+    font-size: map-get($fonts_size, small);
+  }
+}
+@media screen and (max-width: 450px) {
+  p{
+    font-size: map-get($fonts_size, big-tiny);
   }
 }

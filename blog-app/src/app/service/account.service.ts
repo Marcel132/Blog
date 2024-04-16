@@ -46,6 +46,7 @@ export class AccountService {
 
   submitted = false
   invalidEmailOrPassword = false
+  deletingUserError = false
   signupForm = this.fb.group({
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
@@ -82,29 +83,6 @@ export class AccountService {
       })
     }
   }
-  // async onSubmitSignup() {
-  //   // Change the variable on true, when user click signup button
-  //   this.submitted = true
-  //   if (this.signupForm.valid) {
-  //     // Check if email and password are valid
-  //     const email = this.signupForm.value.email
-  //     const password = this.signupForm.value.password
-
-  //     // If data is valid, create a new user in database
-  //     if(email && password){
-  //       try {
-  //         await this.afAuth.createUserWithEmailAndPassword(email, password)
-  //         this.router.navigate(['/'])
-  //         const user = [email, password]
-  //         this.sessionService.set('user', user)
-  //         console.log("User created")
-  //       } catch (error) {
-  //         this.invalidEmailOrPassword = true
-  //         console.log(error)
-  //       }
-  //     }
-  //   }
-  // }
 
   // ---------------------
   // For Login.component
@@ -147,6 +125,7 @@ export class AccountService {
         setTimeout(() => {window.location.reload()}, 100)
         console.log('User deleted successfully');
       }).catch((error) => {
+        this.deletingUserError = true
         console.error('Error deleting user', error);
       });
     }

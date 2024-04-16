@@ -1,11 +1,15 @@
-<div class="dashboard-container">
-  <div class="dashboard-header">
-    <h2>Konto</h2>
+<div class="f-container">
+  <div class="f-wrapper">
+    <div class="dashboard-header">
+      <h2>Konto</h2>
+    </div>
+    <div class="dashbord-content">
+      <div class="user-data"><p>Email: {{userEmail}}</p></div>
+      <div class="user-data"><button type="submit" (click)="changePassword()">Zmiana Hasła</button></div>
+      <div class="user-data"><button type="submit" (click)="deleteUserAccount()">Usuń Konto</button></div>
+      <div *ngIf="deletingUserError">
+        <p>Błąd! Twoja sesja wygasła, aby usunąć konto zaloguj się ponownie do aplikacji</p>
+      </div>
+    </div>
   </div>
-  <div class="dashbord-content">
-    <div class="user-data"><p>Nazwa użytkownika: {{userEmail}}</p></div>
-    <div class="user-data"><button type="submit" (click)="changePassword()">Zmiana Hasła</button></div>
-    <div class="user-data"><button type="submit" (click)="deleteUserAccount()">Usuń Konto</button></div>
-  </div>
-
 </div>

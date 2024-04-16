@@ -39,10 +39,7 @@ export class NavigationComponent implements OnInit {
       } else {
         this.userEmail = "Gość"
       }
-    } else {
-      // Local storage is not supported
-      console.log('Local storage is not supported')
-    }
+    } 
   }
   LogoutButton() {
     this.router.navigate(['/'])
