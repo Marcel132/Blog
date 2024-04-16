@@ -8,11 +8,13 @@ import { RegulationsComponent } from './components/other/regulations/regulations
 import { DashboardComponent } from './components/other/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/other/admin-dashboard/admin-dashboard.component';
 import { PostsComponent } from './components/other/posts/posts.component';
+import { SinglePostComponent } from './components/other/posts/single-post/single-post.component';
 
 
 export const routes: Routes = [
   // {path: '', redirectTo: '', pathMatch: 'full'}, // Default route path is posts
   {path: '', component: PostsComponent},
+  {path: 'posts/:id', component: SinglePostComponent},
   {path: 'account/login', component: LoginComponent},
   {path: 'account/signup', component: SignupComponent},
   {path: 'account/dashboard', component: DashboardComponent},

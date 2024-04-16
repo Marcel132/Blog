@@ -2,10 +2,10 @@
   <section *ngFor="let post of data" class="posts">
     <div class='blogs-wrapper'>
       <div class="content">
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.content }}</p>
+        <h4>{{ post.blog_title }}</h4>
+        <p>{{ post.content_1 }}</p>
       </div>
-      <a class='read-more-btn'>Czytaj więcej</a>
+      <a class='read-more-btn' (click)="goToBlog(post.id)">Czytaj więcej</a>
     </div>
   </section>
 </div>

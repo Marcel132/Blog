@@ -1,0 +1,17 @@
+<div class="post-container">
+  <section class="post-section">
+    <article class="post-article">
+      <div *ngIf="data">
+        <h3>{{ data.blog_title }} </h3>
+        <h4>{{ data.title_1}} </h4>
+        <p> {{data.content_1}} </p>
+      </div>
+    </article>
+    <article class="post-article">
+      <div *ngIf="data">
+        <h3> {{ data.title_2 }} </h3>
+        <p> {{data.content_2}} </p>
+      </div>
+    </article>
+  </section>
+</div>
