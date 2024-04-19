@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { AccountModule } from '../../account/account.module'
 import { Router } from '@angular/router'
-import { User } from '../../../interface/isAdmin.user'
+import { Admin } from '../../../interface/isAdmin.user'
+import { Writter } from '../../../interface/isWritter.user'
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +20,7 @@ import { User } from '../../../interface/isAdmin.user'
 export class NavigationComponent implements OnInit {
   user: any
   isAdmin: boolean = false
+  isWritter: boolean = false
   userEmail: string = ''
 
   constructor(private router: Router) {}
@@ -29,17 +31,23 @@ export class NavigationComponent implements OnInit {
       if (userData) {
         this.user = JSON.parse(userData)
         this.userEmail = this.user.email
-        const userInArray = User.find(u => u.email === this.user.email) // Find the user in the array
-        if(userInArray && userInArray.isAdmin) {
+        const adminInArray = Admin.find(u => u.email === this.user.email) // Find the admin in the array
+        const writterInArray = Writter.find(u => u.email === this.user.email)
+
+        if(adminInArray && adminInArray.isAdmin) {
           this.isAdmin = true
         }
+        else if (writterInArray && writterInArray.isWritter){
+          this.isWritter = true
+        }
         else {
+          this.isWritter = false
           this.isAdmin = false
         }
       } else {
         this.userEmail = "Gość"
       }
-    } 
+    }
   }
   LogoutButton() {
     this.router.navigate(['/'])

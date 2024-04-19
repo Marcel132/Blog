@@ -20,7 +20,7 @@
       </div>
       <div class="option-list-user" *ngIf="userEmail != 'Gość'">
         <li class="account-option-list"><a routerLink='/dashboard'>Konto</a></li>
-        <li class="account-option-list" *ngIf='isAdmin == true'><a routerLink='/admin'>Admin</a></li>
+        <li class="account-option-list" *ngIf='isAdmin === true || isWritter === true'><a routerLink='/admin'>Admin</a></li>
         <li class="account-option-list"><a (click)="LogoutButton()">Wyloguj się</a></li>
       </div>
     </ul>

@@ -1,7 +1,7 @@
-import { IsAdmin } from './admin.interface'
+import { IsAdmin } from './interface'
 
 // Here is the list of users that are admins
-export const User: IsAdmin[] = [
+export const Admin: IsAdmin[] = [
     // Template:
     // email: 'admin@example.com',
     // isAdmin: true

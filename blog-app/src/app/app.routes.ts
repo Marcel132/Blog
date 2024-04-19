@@ -11,6 +11,7 @@ import { SinglePostComponent } from './components/other/posts/single-post/single
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { CreateBlogComponent } from './components/admin/create-blog/create-blog.component';
+import { UsersComponent } from './components/admin/users/users.component';
 
 
 export const routes: Routes = [
@@ -26,7 +27,8 @@ export const routes: Routes = [
   {path: 'regulations', component: RegulationsComponent},
   {path: 'admin', component: AdminComponent, children: [
     {path: '', component: AdminDashboardComponent},
-    {path: 'createblog', component: CreateBlogComponent}
+    {path: 'createblog', component: CreateBlogComponent},
+    {path: 'users', component: UsersComponent},
   ]}
 ];
 
