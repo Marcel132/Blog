@@ -3,7 +3,7 @@ export interface IsAdmin {
   isAdmin: boolean
 }
 
-export interface IsWritter {
+export interface IsWriter {
   email: string
-  isWritter: boolean
+  isWriter: boolean
 }

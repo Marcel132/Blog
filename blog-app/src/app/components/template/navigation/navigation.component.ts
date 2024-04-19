@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common'
 import { AccountModule } from '../../account/account.module'
 import { Router } from '@angular/router'
 import { Admin } from '../../../interface/isAdmin.user'
-import { Writter } from '../../../interface/isWritter.user'
+import { Writter } from '../../../interface/isWriter.user'
 
 @Component({
   selector: 'app-navigation',

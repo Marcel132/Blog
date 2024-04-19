@@ -3,7 +3,7 @@
     <nav class="admin-navigation">
       <ul class="admin-menu">
         <li class="admin-menu-list"><a routerLink='/admin'><img src="../../../assets/img/house.svg" alt="Dashboard"></a></li>
-        <div *ngIf="isAdmin === true || isWritter === true">
+        <div *ngIf="isAdmin === true || isWriter === true">
           <li class="admin-menu-list"><a routerLink='/admin/createblog'>Blogi</a></li>
         </div>
         <div *ngIf="isAdmin === true">

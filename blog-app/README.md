@@ -12,3 +12,6 @@ Github: url('https://github.com/Marcel132/Blog')
   Version 0.1 includes creating a template with components(navigation, footer, social media, policy and account - login and signup), modules and routing between components.
 #### Version 0.2 
   Version 0.2 includes creating a firebase and connect it with account.service.ts and app.module.ts. In this version I created a login and signup forms that create a user account or logged him into the Firebase account
+
+### Version 0.2.5
+  Version 0.2.5 includes new design of the website, admin dashboard with it's components, new routes and security. I added a new function for the writer

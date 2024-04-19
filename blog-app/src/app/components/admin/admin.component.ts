@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Admin } from '../../interface/isAdmin.user';
-import { Writter } from '../../interface/isWritter.user';
+import { Writer } from '../../interface/isWriter.user';
 import { CommonModule } from '@angular/common';
 import { AdminModule } from './admin.module';
 
@@ -22,7 +22,7 @@ export class AdminComponent {
   user: any
   userEmail: string = ''
   isAdmin: boolean = false
-  isWritter: boolean = false
+  isWriter: boolean = false
 
   ngOnInit() {
     if(typeof(Storage) !== 'undefined') {
@@ -32,15 +32,15 @@ export class AdminComponent {
         this.userEmail = this.user.email
 
         const adminInArray = Admin.find(u => u.email === this.userEmail)
-        const writterInArray = Writter.find(u => u.email === this.userEmail)
+        const writterInArray = Writer.find(u => u.email === this.userEmail)
 
         if(adminInArray && adminInArray.isAdmin) {
           this.isAdmin = true
-        } else if(writterInArray && writterInArray.isWritter){
-          this.isWritter = true
+        } else if(writterInArray && writterInArray.isWriter){
+          this.isWriter = true
         } else {
           this.isAdmin = false
-          this.isWritter = false
+          this.isWriter = false
         }
       }
     }
