@@ -1,4 +1,5 @@
-<div class="post-container">
+<!-- Divs with class: 'ads-break' are a containers for ads  -->
+<div class="f-container">
   <section class="post-section">
     <article class="post-article">
       <div *ngIf="data">
@@ -7,10 +8,42 @@
         <p> {{data.content_1}} </p>
       </div>
     </article>
+    <article class="post-article ads-break">
+      <div *ngIf='data && data.title_1 && data.content_1'>
+
+      </div>
+    </article>
     <article class="post-article">
       <div *ngIf="data">
-        <h3> {{ data.title_2 }} </h3>
+        <h4> {{ data.title_2 }} </h4>
         <p> {{data.content_2}} </p>
+      </div>
+    </article>
+    <article class="post-article ads-break">
+      <div *ngIf='data && data.title_2 && data.content_2'>
+
+      </div>
+    </article>
+    <article class="post-article">
+      <div *ngIf="data">
+        <h4> {{ data.title_3 }} </h4>
+        <p> {{data.content_3}} </p>
+      </div>
+    </article>
+    <article class="post-article ads-break">
+      <div *ngIf='data && data.title_3 && data.content_3'>
+
+      </div>
+    </article>
+    <article class="post-article">
+      <div *ngIf="data">
+        <h4> {{ data.title_4 }} </h4>
+        <p> {{data.content_4}} </p>
+      </div>
+    </article>
+    <article class="post-article ads-break">
+      <div *ngIf='data && data.title_4 && data.content_4'>
+
       </div>
     </article>
   </section>
