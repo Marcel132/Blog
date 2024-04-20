@@ -11,8 +11,18 @@
   <div class="account">
     <img src="../../../../assets/img/person-circle.svg" alt="Account" id="account-trigger" class='nav-img'>
     <ul class="account-options">
-      <li class="account-option-list"><a routerLink='/account/login'>Zaloguj się</a></li>
-      <li class="account-option-list"><a routerLink='/account/signup'>Zarejestruj się</a></li>
+      <div class="guest-name-box">
+        <p class='guest-name'>{{userEmail}}</p>
+      </div>
+      <div class="option-list" *ngIf="userEmail == 'Gość'">
+        <li class="account-option-list"><a routerLink='/account/login'>Zaloguj się</a></li>
+        <li class="account-option-list"><a routerLink='/account/signup'>Zarejestruj się</a></li>
+      </div>
+      <div class="option-list-user" *ngIf="userEmail != 'Gość'">
+        <li class="account-option-list"><a routerLink='/dashboard'>Konto</a></li>
+        <li class="account-option-list" *ngIf='isAdmin === true || isWritter === true'><a routerLink='/admin'>Admin</a></li>
+        <li class="account-option-list"><a (click)="LogoutButton()">Wyloguj się</a></li>
+      </div>
     </ul>
   </div>
   <script src="./script.js"></script>
