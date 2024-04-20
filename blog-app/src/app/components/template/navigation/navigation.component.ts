@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common'
 import { AccountModule } from '../../account/account.module'
 import { Router } from '@angular/router'
 import { Admin } from '../../../interface/isAdmin.user'
-import { Writter } from '../../../interface/isWriter.user'
+import { Writer } from '../../../interface/isWriter.user'
 
 @Component({
   selector: 'app-navigation',
@@ -32,12 +32,12 @@ export class NavigationComponent implements OnInit {
         this.user = JSON.parse(userData)
         this.userEmail = this.user.email
         const adminInArray = Admin.find(u => u.email === this.user.email) // Find the admin in the array
-        const writterInArray = Writter.find(u => u.email === this.user.email)
+        const writterInArray = Writer.find(u => u.email === this.user.email)
 
         if(adminInArray && adminInArray.isAdmin) {
           this.isAdmin = true
         }
-        else if (writterInArray && writterInArray.isWritter){
+        else if (writterInArray && writterInArray.isWriter){
           this.isWritter = true
         }
         else {

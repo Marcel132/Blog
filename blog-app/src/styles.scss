@@ -53,6 +53,11 @@ $fonts_size: (
   box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
   background-color: map-get($colors, c_white);
 }
+.error-box{
+  font-size: map-get($fonts_size, small);
+  font-style: oblique;
+  margin: 0.2rem;
+}
 
 * {
   padding: 0;

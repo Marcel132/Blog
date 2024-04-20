@@ -44,9 +44,9 @@ export class AccountService {
     return null
   }
 
-  submitted = false
-  invalidEmailOrPassword = false
-  deletingUserError = false
+  submitted: boolean = false
+  invalidEmailOrPassword: boolean = false
+  deletingUserError: boolean = false
   signupForm = this.fb.group({
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
@@ -108,6 +108,10 @@ export class AccountService {
     })
   }
 
+  async sendDataToDatabase(user: string) {
+    
+  }
+
   async changePassword() {
     const data = this.sessionService.get('user')
     let email = data.email
@@ -125,8 +129,8 @@ export class AccountService {
         setTimeout(() => {window.location.reload()}, 100)
         console.log('User deleted successfully');
       }).catch((error) => {
-        this.deletingUserError = true
         console.error('Error deleting user', error);
+        this.deletingUserError = true
       });
     }
   }
