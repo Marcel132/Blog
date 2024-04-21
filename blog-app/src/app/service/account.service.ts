@@ -5,7 +5,9 @@ import { AbstractControl, FormBuilder, Validators  } from '@angular/forms'
 import { Router} from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { SessionService } from './session.service'
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs'
+import { user } from '@angular/fire/auth'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class AccountService {
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore,
     private router: Router,
     private sessionService: SessionService,
     ) { }
@@ -108,8 +111,19 @@ export class AccountService {
     })
   }
 
-  async sendDataToDatabase(user: string) {
-    
+  // ---------------------
+  // For Dashboard.component
+  // ---------------------
+  async saveUserData(userData: any) {
+    try {
+      await this.firestore.collection('users').doc(userData.uid).set(userData)
+      console.log(userData.uid)
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  async dashboardFunction(userData: any) {
+    this.saveUserData(userData)
   }
 
   async changePassword() {
@@ -133,6 +147,25 @@ export class AccountService {
         this.deletingUserError = true
       });
     }
+  }
+
+
+  
+  async userLocalStorage(nameStorage: string) {
+    return new Promise((resolve, reject) => {
+      if(typeof(Storage) !== 'undefined'){
+        const data = localStorage.getItem(nameStorage)
+        if(data) {
+          let parseData = JSON.parse(data)
+          resolve(parseData)
+        }
+        else {
+          reject("Data not found: " + nameStorage)
+        }
+      } else {
+        reject("Storage not found: " + nameStorage)
+      }
+    })
   }
 
 }

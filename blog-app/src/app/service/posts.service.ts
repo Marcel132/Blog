@@ -22,11 +22,4 @@ export class PostsService {
       map((posts: any) => posts[0])
     )
   }
-  // getPostByTitle(title: string) {
-  //   return this.firestore.collection('posts', ref => ref.where('title', '==', title))
-  //     .valueChanges()
-  //     .pipe(
-  //       map((posts: any) => posts[0]) // return the first post that matches the title
-  //     );
-  // }
 }

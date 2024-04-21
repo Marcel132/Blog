@@ -14,7 +14,7 @@
       <div class="guest-name-box">
         <p class='guest-name'>{{userEmail}}</p>
       </div>
-      <div class="option-list" *ngIf="userEmail == 'Gość'">
+      <div class="option-list" *ngIf="isGuest">
         <li class="account-option-list"><a routerLink='/account/login'>Zaloguj się</a></li>
         <li class="account-option-list"><a routerLink='/account/signup'>Zarejestruj się</a></li>
       </div>
