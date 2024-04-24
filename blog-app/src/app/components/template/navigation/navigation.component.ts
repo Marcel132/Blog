@@ -36,8 +36,8 @@ export class NavigationComponent implements OnInit {
       this.userEmail = 'Gość'
     }
 
-    //Check local storage 
-    this.user = await this.accountService.userLocalStorage('user')
+    //Check local storage
+    this.user = await this.accountService.userLocalStorage('userSession')
     this.userEmail = this.user.email
 
     const adminInArray = Admin.find(u => u.email === this.user.email) // Find the admin in the array
@@ -54,11 +54,12 @@ export class NavigationComponent implements OnInit {
     else {
       this.isWritter = false
       this.isAdmin = false
+      this.isGuest = false
     }
 
 
     if (typeof(Storage) !== "undefined") {
-      const userData = localStorage.getItem('user') // Create in local storage when user logs in or singup
+      const userData = localStorage.getItem('userSession') // Create in local storage when user logs in or singup
       if (userData) {
         this.user = JSON.parse(userData)
         this.userEmail = this.user.email
@@ -82,7 +83,7 @@ export class NavigationComponent implements OnInit {
   }
   LogoutButton() {
     this.router.navigate(['/'])
-    localStorage.removeItem('user')
+    localStorage.removeItem('userSession')
     setTimeout(() => {window.location.reload()}, 100)
   }
 }

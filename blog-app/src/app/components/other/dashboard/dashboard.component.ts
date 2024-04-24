@@ -5,6 +5,7 @@ import { Writer } from '../../../interface/isWriter.user';
 import { Admin } from '../../../interface/isAdmin.user';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../../../service/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ export class DashboardComponent {
   constructor(
     private accountService: AccountService,
     private sessionService: SessionService,
+    private router: Router,
 
   ){ }
 
@@ -51,7 +53,7 @@ export class DashboardComponent {
   }
 
   saveData() {
-    const data = localStorage.getItem('user')
+    const data = localStorage.getItem('userSession')
 
     if(data) {
       let user = JSON.parse(data)
@@ -62,7 +64,7 @@ export class DashboardComponent {
     }
   }
   changePassword() {
-    this.accountService.changePassword()
+    this.router.navigate(['/reset_password'])
   }
   deleteUserAccount() {
     if (this.accountService.deletingUserError){
@@ -73,7 +75,7 @@ export class DashboardComponent {
   }
 
   async ngOnInit() {
-    let user: any = await this.accountService.userLocalStorage('user')
+    let user: any = await this.accountService.userLocalStorage('userSession')
     if(user) {
       this.userEmail = user.email
       const adminInArray = Admin.find(u => u.email === user.email) // Find the admin in the array

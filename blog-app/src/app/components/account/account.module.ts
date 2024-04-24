@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountService } from '../../service/account.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -11,15 +12,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ResetPasswordComponent
   ],
   providers: [
     AccountService

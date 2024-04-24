@@ -9,7 +9,7 @@
 }
 .form-box {
   width: 300px;
-  height: 300px;
+  height: 350px;
   box-shadow: 1px 1px 8px map-get($colors, c_black_with_opacity);
 }
 .form {
@@ -38,5 +38,16 @@
     border-radius: 45px;
     overflow: hidden;
     outline: none;
+  }
+}
+.restart-password {
+  font-size: map-get($fonts_size, tiny);
+  transform: translate(0, -30px);
+  padding-left: 2.5rem;
+
+  button {
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
   }
 }

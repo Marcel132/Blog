@@ -6,8 +6,6 @@ import { Router} from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { SessionService } from './session.service'
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs'
-import { user } from '@angular/fire/auth'
 
 @Injectable({
   providedIn: 'root'
@@ -47,9 +45,17 @@ export class AccountService {
     return null
   }
 
+  // For login and signup forms
   submitted: boolean = false
   invalidEmailOrPassword: boolean = false
+
+  // For deleting user
   deletingUserError: boolean = false
+
+  // For reset password form
+  isEmailTrue: boolean = false
+  invalidEmail: boolean = false
+
   signupForm = this.fb.group({
     email: ['', [Validators.required, this.validateEmail]],
     password: ['', [Validators.required, this.validatePassword]],
@@ -69,13 +75,9 @@ export class AccountService {
       .then((Credentials) => {
         let user = Credentials.user
         if(user){
-          this.sessionService.set('user', user)
+          this.sessionService.set('userSession', user)
           this.router.navigate(['/'])
-          console.log(user + ' signup')
           setTimeout(() => {window.location.reload()}, 100)
-        }
-        else {
-          console.log("Cannot signup")
         }
       })
       .catch((error) => {
@@ -98,7 +100,7 @@ export class AccountService {
       // Signed in
       let user = Credential.user
       if (user) {
-        this.sessionService.set('user', user)
+        this.sessionService.set('userSession', user)
         this.router.navigate(['/'])
       }
       setTimeout(() => {window.location.reload()}, 100)
@@ -117,7 +119,6 @@ export class AccountService {
   async saveUserData(userData: any) {
     try {
       await this.firestore.collection('users').doc(userData.uid).set(userData)
-      console.log(userData.uid)
     } catch(error) {
       console.log(error)
     }
@@ -126,14 +127,36 @@ export class AccountService {
     this.saveUserData(userData)
   }
 
-  async changePassword() {
-    const data = this.sessionService.get('user')
-    let email = data.email
-      this.afAuth.sendPasswordResetEmail(email)
-      .then(() => {
-        console.log('Email sent')
+
+  // ---------------------
+  // For Reset-password.component
+  // ---------------------
+  async checkEmail(email: string): Promise<boolean> {
+    console.log(email)
+    return new Promise((resolve, reject) => {
+      this.afAuth.fetchSignInMethodsForEmail(email)
+      .then((signInMethods) => {
+        if(signInMethods) {
+          console.log('Valid email')
+          resolve(true);
+        }
+        else {
+          console.log('Invalid email')
+          reject(false);
+        }
       })
+    })
   }
+
+  async changePassword(email: string, resetLink: boolean) {
+    this.afAuth.sendPasswordResetEmail(email)
+    .then(() => {
+      resetLink = true
+      console.log('Send reset email')
+    }
+    )
+  }
+
   async deleteUserAccount() {
     const user = await this.afAuth.currentUser;
     if(user) {
@@ -150,7 +173,7 @@ export class AccountService {
   }
 
 
-  
+
   async userLocalStorage(nameStorage: string) {
     return new Promise((resolve, reject) => {
       if(typeof(Storage) !== 'undefined'){
