@@ -60,7 +60,7 @@ export class DashboardComponent {
       this.userSchema.Email = user.email
       this.userSchema.Status = this.userStatus
       this.userSchema.uid = user.uid
-      this.accountService.dashboardFunction(this.userSchema)
+      this.accountService.saveUserData(this.userSchema)
     }
   }
   changePassword() {

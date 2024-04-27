@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { AccountService } from '../../service/account.service';
+import { LoginComponent } from '../components/account/login/login.component';
+import { SignupComponent } from '../components/account/signup/signup.component';
+import { AccountService } from '../service/account.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResetPasswordComponent } from '../components/account/reset-password/reset-password.component';
+import { AdminService } from '../service/admin.service';
 
 
 
@@ -26,7 +27,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ResetPasswordComponent
   ],
   providers: [
-    AccountService
+    AccountService,
+    AdminService
   ]
 })
 export class AccountModule {

@@ -123,38 +123,12 @@ export class AccountService {
       console.log(error)
     }
   }
-  async dashboardFunction(userData: any) {
-    this.saveUserData(userData)
-  }
-
 
   // ---------------------
   // For Reset-password.component
   // ---------------------
-  async checkEmail(email: string): Promise<boolean> {
-    console.log(email)
-    return new Promise((resolve, reject) => {
-      this.afAuth.fetchSignInMethodsForEmail(email)
-      .then((signInMethods) => {
-        if(signInMethods) {
-          console.log('Valid email')
-          resolve(true);
-        }
-        else {
-          console.log('Invalid email')
-          reject(false);
-        }
-      })
-    })
-  }
-
-  async changePassword(email: string, resetLink: boolean) {
+  async changePassword(email: string) {
     this.afAuth.sendPasswordResetEmail(email)
-    .then(() => {
-      resetLink = true
-      console.log('Send reset email')
-    }
-    )
   }
 
   async deleteUserAccount() {
@@ -172,8 +146,6 @@ export class AccountService {
     }
   }
 
-
-
   async userLocalStorage(nameStorage: string) {
     return new Promise((resolve, reject) => {
       if(typeof(Storage) !== 'undefined'){
@@ -185,7 +157,8 @@ export class AccountService {
         else {
           reject("Data not found: " + nameStorage)
         }
-      } else {
+      }
+      else {
         reject("Storage not found: " + nameStorage)
       }
     })

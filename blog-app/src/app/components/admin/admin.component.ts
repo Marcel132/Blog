@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 import { Admin } from '../../interface/isAdmin.user';
 import { Writer } from '../../interface/isWriter.user';
 import { CommonModule } from '@angular/common';
-import { AdminModule } from './admin.module';
+import { AdminModule } from '../../modules/admin.module';
+import { AccountService } from '../../service/account.service';
 
 
 @Component({
@@ -19,31 +20,25 @@ import { AdminModule } from './admin.module';
 })
 export class AdminComponent {
 
+  constructor(
+    private accountService: AccountService,
+  ) {}
+
   user: any
   userEmail: string = ''
   isAdmin: boolean = false
   isWriter: boolean = false
 
-  ngOnInit() {
-    if(typeof(Storage) !== 'undefined') {
-      const userData = localStorage.getItem('user');
-      if(userData) {
-        this.user = JSON.parse(userData)
-        this.userEmail = this.user.email
+  async ngOnInit() {
+    let user: any = await this.accountService.userLocalStorage('userSession')
+    if(user) {
 
-        const adminInArray = Admin.find(u => u.email === this.userEmail)
-        const writterInArray = Writer.find(u => u.email === this.userEmail)
+      const adminInArray = Admin.find(u => u.email === user.email)
+      const writterInArray = Writer.find(u => u.email === user.email)
 
-        if(adminInArray && adminInArray.isAdmin) {
-          this.isAdmin = true
-        } else if(writterInArray && writterInArray.isWriter){
-          this.isWriter = true
-        } else {
-          this.isAdmin = false
-          this.isWriter = false
-        }
-      }
+      this.isAdmin = (adminInArray && adminInArray.isAdmin === true) ? true : false
+      this.isWriter = (writterInArray && writterInArray.isWriter === true) ? true : false
+
     }
   }
-
 }

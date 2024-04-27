@@ -14,24 +14,8 @@ export class ResetPasswordComponent {
   ) {}
 
   email: string = ''
-  isEmailTrue: boolean = false
-  sendLink: boolean = false
-  invalidEmail: boolean = false
-
-  clearErrors() {
-    this.invalidEmail = false
-  }
   
-  async checkEmail() {
-    try {
-      this.isEmailTrue = await this.accountService.checkEmail(this.email);
-    } catch (error) {
-      this.invalidEmail = true
-      console.log(error)
-    }
-  }
-
   changePassword(){
-    this.accountService.changePassword(this.email, this.sendLink)
+    this.accountService.changePassword(this.email)
   }
 }

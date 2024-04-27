@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { AccountModule } from '../../account/account.module'
+import { AccountModule } from '../../../modules/account.module'
 import { Router } from '@angular/router'
 import { Admin } from '../../../interface/isAdmin.user'
 import { Writer } from '../../../interface/isWriter.user'
