@@ -1,11 +1,12 @@
 <div class="admin-dashboard-wrapper">
-  <div class='menu-list-item'  *ngIf="isAdmin || isWriter"><a routerLink="/admin/createblog"><img src="../../../../assets/img/card-text.svg" alt="Blogs" title='Blogs'>Blogs</a></div>
-  <div class='menu-list-item' *ngIf="isAdmin"><a routerLink="/admin/users"><img src="../../../../assets/img/people.svg" alt="Users" title='Users'><span>Users</span></a></div>
-  <div class='menu-list-item' *ngIf="isAdmin"><a routerLink=""><img src="../../../../assets/img/database.svg" alt="Database" title='Database'><span>Database</span></a></div>
-  <div class='menu-list-item' *ngIf="isAdmin"><a routerLink=""><img src="" alt="" title=''><span></span></a></div>
-  <div class='menu-list-item' *ngIf="isAdmin"><a routerLink=""><img src="" alt="" title=''><span></span></a></div>
-  <div class='menu-list-item' *ngIf="isAdmin"><a routerLink=""><img src="" alt="" title=''><span></span></a></div>
+  <a routerLink="/admin/createblog"><div class='menu-list-item'  *ngIf="isAdmin || isWriter"><img src="../../../../assets/img/card-text.svg" alt="Blogs" title='Blogs'>Blogs</div></a>
+  <a routerLink="/admin/users"><div class='menu-list-item' *ngIf="isAdmin"><img src="../../../../assets/img/people.svg" alt="Users" title='Users'><span>Users</span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="../../../../assets/img/database.svg" alt="Database" title='Database'><span>Database</span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
 
-  <!-- <div><a routerLink=""><img src="" alt="" title=''><span></span></a></div> -->
+  <!-- <a routerLink=""><div class='menu-list-item' *ngIf=""><img src="" alt="" title=''><span></span></div></a> -->
+
 </div>
 
