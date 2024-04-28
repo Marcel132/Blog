@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from '../components/admin/admin-dashboard/adm
 import { CreateBlogComponent } from '../components/admin/create-blog/create-blog.component';
 import { AdminService } from '../service/admin.service';
 import { UsersComponent } from '../components/admin/users/users.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +16,7 @@ import { UsersComponent } from '../components/admin/users/users.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
   ],
   exports: [
     AdminDashboardComponent,

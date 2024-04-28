@@ -3,32 +3,12 @@
 .admin-wrapper{
   width: 80%;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
   background-color: map-get($colors, c_white);
 }
-.admin-navigation {
-  width: 100%;
-  min-height: 10vh;
-  padding: 1rem;
-}
-.admin-menu {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  font-size: map-get($fonts_size, small);
 
-  div{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    font-size: map-get($fonts_size, small);
-  }
-  img {
-    width: 1.3rem;
-  }
-}

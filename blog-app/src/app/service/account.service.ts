@@ -69,15 +69,21 @@ export class AccountService {
   // For Signup.component
   // ---------------------
   async onSubmitSignup(email: string, password: string) {
+    let defaultStatus: string = 'Użytkownik'
     this.submitted = true
     if(this.signupForm.valid){
       this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((Credentials) => {
+      .then(async (Credentials) => {
         let user = Credentials.user
         if(user){
           this.sessionService.set('userSession', user)
-          this.router.navigate(['/'])
-          setTimeout(() => {window.location.reload()}, 100)
+          let userSession: any = await this.userLocalStorage('userSession')
+          console.log(userSession)
+          if(userSession){
+            this.saveUserData(userSession.email, defaultStatus, userSession.uid)
+            this.router.navigate(['/'])
+            setTimeout(() => {window.location.reload()}, 2000)
+          }
         }
       })
       .catch((error) => {
@@ -96,7 +102,7 @@ export class AccountService {
     // Change the variable on true, when user click signup button
     this.submitted = true
     this.afAuth.signInWithEmailAndPassword(email, password)
-    .then((Credential) => {
+    .then(async (Credential) => {
       // Signed in
       let user = Credential.user
       if (user) {
@@ -116,9 +122,26 @@ export class AccountService {
   // ---------------------
   // For Dashboard.component
   // ---------------------
-  async saveUserData(userData: any) {
+  async saveUserData(email: string, status: string, uid: string) {
+    // Take date and time
+    let date = new Date()
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    let hour = date.getHours()
+    let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
+
+    let createdAt = `${year}/${month}/${day} ${hour}:${minutes}:${seconds}`
+
+    let userSchema = {
+      Email: email,
+      Status: status,
+      CreatedAt: createdAt,
+      uid: uid,
+    }
     try {
-      await this.firestore.collection('users').doc(userData.uid).set(userData)
+      await this.firestore.collection('users').doc(userSchema.uid).set(userSchema)
     } catch(error) {
       console.log(error)
     }
@@ -135,9 +158,10 @@ export class AccountService {
     const user = await this.afAuth.currentUser;
     if(user) {
       user.delete().then(() => {
+        this.firestore.collection('users').doc(user.uid).delete()
         this.sessionService.clear()
         this.router.navigate(['/'])
-        setTimeout(() => {window.location.reload()}, 100)
+        setTimeout(() => {window.location.reload()}, 500)
         console.log('User deleted successfully');
       }).catch((error) => {
         console.error('Error deleting user', error);
@@ -159,7 +183,7 @@ export class AccountService {
         }
       }
       else {
-        reject("Storage not found: " + nameStorage)
+
       }
     })
   }
