@@ -3,8 +3,10 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+
+  .nav-list-item{
+    margin: 1rem 0;
+    letter-spacing: 1px;
+  }
 }
-ul li a {
-  display: block;
-  gap: 1rem;
-}
+

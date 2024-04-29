@@ -1,2 +1,42 @@
-<div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
-
+<div class="blogs-container">
+  <div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
+  <div class="blogs-wrapper">
+    <form class='blogs-form'>
+      <section class="blogs-content">
+        <label for="blog_title">Tytuł bloga:</label>
+        <textarea type="text" id="blog_title" name="blog_title"></textarea>
+      </section>
+      <section class="blogs-content">
+        <label for="title_1">Tytuł 1:</label>
+        <textarea type="text" id="title_1" name="title_1"></textarea>
+        <label for="content_1">Treść 1:</label>
+        <textarea type="text" id="content_1" name="content_1"></textarea>
+      </section>
+      <section class="blogs-content">
+        <label for="title_2">Tytuł 2:</label>
+        <textarea type="text" id="title_2" name="title_2"></textarea>
+        <label for="content_2">Treść 2:</label>
+        <textarea type="text" id="content_2" name="content_2"></textarea>
+      </section>
+      <section class="blogs-content">
+        <label for="title_3">Tytuł 3:</label>
+        <textarea type="text" id="title_3" name="title_3"></textarea>
+        <label for="content_3">Treść 3:</label>
+        <textarea type="text" id="content_3" name="content_3"></textarea>
+      </section>
+      <section class="blogs-content">
+        <label for="title_4">Tytuł 4:</label>
+        <textarea type="text" id="title_4" name="title_4"></textarea>
+        <label for="content_4">Treść 4:</label>
+        <textarea type="text" id="content_4" name="content_4"></textarea>
+      </section>
+      <section class="blogs-content">
+        <label for="title_5">Tytuł 5:</label>
+        <textarea type="text" id="title_5" name="title_5"></textarea>
+        <label for="content_5">Treść 5:</label>
+        <textarea type="text" id="content_5" name="content_5"></textarea>
+      </section>
+      <input type="submit" value="Wyślij">
+    </form>
+  </div>
+</div>

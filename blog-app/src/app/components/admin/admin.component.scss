@@ -4,11 +4,10 @@
   width: 80%;
   margin: 2rem auto;
   padding: 2rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
   box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
   background-color: map-get($colors, c_white);
+}
+.admin-content {
+  width: 100%;
 }
 

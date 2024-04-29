@@ -1,5 +1,8 @@
 @import '../../../../styles.scss';
 .f-container{
+  .f-wrapper {
+    box-shadow: 1px 1px 24px map-get($colors, c_cream_white);
+  }
   strong {
     font-weight: normal;
     text-decoration: underline;

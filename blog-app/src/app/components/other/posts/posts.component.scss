@@ -11,9 +11,9 @@
   justify-content: center;
 }
 .posts {
-  width: 250px;
+  width: 275px;
   height: 350px;
-  box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
+  box-shadow: 1px 1px 24px map-get($colors, c_cream_white);
   background-color: map-get($colors, c_white);
 }
 .blogs-wrapper {
@@ -57,12 +57,17 @@
   position: relative;
   left: 1.7rem;
   bottom: .5rem;
-  border: 3px solid map-get($colors, b_pink);
   font-size: map-get($fonts_size, small);
   cursor: pointer;
   opacity: 1;
+  background: linear-gradient(to right, map-get($colors, c_green) 0%, map-get($colors, c_green) 50%, map-get($colors, c_red), 50%, map-get($colors, c_red) 100%);
+  background-size: 200% 100%;
+  background-position: right;
+  transition: background-position 0.5s ease, color 0.5s ease;
 
   &:hover{
+    background-position: left;
+    color: map-get($colors, c_cream_white);
     opacity: .8;
   }
 }
