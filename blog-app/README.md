@@ -15,3 +15,6 @@ Github: url('https://github.com/Marcel132/Blog')
 
 ### Version 0.2.5
   Version 0.2.5 includes new design of the website, admin dashboard with it's components, new routes and security. I added a new function for the writer
+
+### Version 0.3
+  Version 0.3 contains a new design of the website, admin panel that have an option 'create-blog'. This option can be used to create a blog and send data to firestore
