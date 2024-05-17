@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { CreateBlogComponent } from './components/admin/create-blog/create-blog.component';
 import { UsersComponent } from './components/admin/users/users.component';
+import { ResetPasswordComponent } from './components/account/reset-password/reset-password.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
   {path: 'posts/:id', component: SinglePostComponent},
   {path: 'account/login', component: LoginComponent},
   {path: 'account/signup', component: SignupComponent},
+  {path: 'reset_password', component: ResetPasswordComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'socialmedia', component: SocialmediaComponent},
   {path: 'policy', component: PolicyComponent},

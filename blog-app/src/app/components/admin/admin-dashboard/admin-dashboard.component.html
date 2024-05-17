@@ -1,1 +1,12 @@
-<p>admin-dashboard works!</p>
+<div class="admin-dashboard-wrapper">
+  <a routerLink="/admin/createblog"><div class='menu-list-item'  *ngIf="isAdmin || isWriter"><img src="../../../../assets/img/card-text.svg" alt="Blogs" title='Blogs'><span>Blogs</span></div></a>
+  <a routerLink="/admin/users"><div class='menu-list-item' *ngIf="isAdmin"><img src="../../../../assets/img/people.svg" alt="Users" title='Users'><span>Users</span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="../../../../assets/img/database.svg" alt="Database" title='Database'><span>Database</span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
+  <a routerLink=""><div class='menu-list-item' *ngIf="isAdmin"><img src="" alt="" title=''><span></span></div></a>
+
+  <!-- <a routerLink=""><div class='menu-list-item' *ngIf=""><img src="" alt="" title=''><span></span></div></a> -->
+
+</div>
+

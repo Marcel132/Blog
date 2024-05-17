@@ -2,8 +2,8 @@ import { Component } from '@angular/core'
 import { NavigationEnd, RouterModule, Router } from '@angular/router'
 import { NavigationComponent } from './components/template/navigation/navigation.component'
 import { FooterComponent } from './components/template/footer/footer.component'
-import { AccountModule } from './components/account/account.module'
-import { AppModule } from './app.module'
+import { AccountModule } from './modules/account.module'
+import { AppModule } from './modules/app.module'
 
 
 @Component({

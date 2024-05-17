@@ -1,19 +1,10 @@
 <div class="f-container">
   <div class="admin-wrapper">
-    <nav class="admin-navigation">
-      <ul class="admin-menu">
-        <li class="admin-menu-list"><a routerLink='/admin'><img src="../../../assets/img/house.svg" alt="Dashboard"></a></li>
-        <div *ngIf="isAdmin === true || isWriter === true">
-          <li class="admin-menu-list"><a routerLink='/admin/createblog'>Blogi</a></li>
-        </div>
-        <div *ngIf="isAdmin === true">
-          <li class="admin-menu-list"><a routerLink='/admin/users'>Użytkownicy</a></li>
-          <li class="admin-menu-list"><a routerLink=''>Firebase</a></li>
-        </div>
-      </ul>
-    </nav>
-    <div class="admin-content">
-      <router-outlet></router-outlet>
+    <div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
+    <div *ngIf="isAdmin === true || isWriter === true">
+      <div class="admin-content">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

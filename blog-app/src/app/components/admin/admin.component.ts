@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Admin } from '../../interface/isAdmin.user';
-import { Writer } from '../../interface/isWriter.user';
 import { CommonModule } from '@angular/common';
-import { AdminModule } from './admin.module';
+import { AdminModule } from '../../modules/admin.module';
+import { AccountService } from '../../service/account.service';
+import { AdminService } from '../../service/admin.service';
 
 
 @Component({
@@ -17,33 +17,36 @@ import { AdminModule } from './admin.module';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
-  user: any
-  userEmail: string = ''
+  constructor(
+    private accountService: AccountService,
+    private adminService: AdminService,
+  ) {}
+
+  showArrow: boolean = false
   isAdmin: boolean = false
   isWriter: boolean = false
 
-  ngOnInit() {
-    if(typeof(Storage) !== 'undefined') {
-      const userData = localStorage.getItem('user');
-      if(userData) {
-        this.user = JSON.parse(userData)
-        this.userEmail = this.user.email
+  async ngOnInit() {
+    let user: any = await this.accountService.userLocalStorage('userSession')
+    if(user){
+      let userStatus = await this.adminService.checkStatus(user.email)
+      if(userStatus){
+        const isAdmin = userStatus.isAdmin
+        const isWriter = userStatus.isWriter
 
-        const adminInArray = Admin.find(u => u.email === this.userEmail)
-        const writterInArray = Writer.find(u => u.email === this.userEmail)
-
-        if(adminInArray && adminInArray.isAdmin) {
+        if(isAdmin === true){
           this.isAdmin = true
-        } else if(writterInArray && writterInArray.isWriter){
+        } else if(isWriter === true) {
           this.isWriter = true
         } else {
           this.isAdmin = false
           this.isWriter = false
         }
+
+        this.adminService.setUserData(isAdmin, isWriter)
       }
     }
   }
-
 }

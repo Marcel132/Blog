@@ -1,17 +1,19 @@
 <div class="app-container">
 
-  <nav class="navigation">
-    <app-navigation></app-navigation>
-  </nav>
-  <div class="blogs-box">
-    <div class="list-box">
+  <div class="wrapper">
+    <nav class="navigation">
+      <app-navigation></app-navigation>
+    </nav>
+    <div class="blogs-box">
+      <div class="list-box">
+      </div>
+      <div class="content-box">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    <div class="content-box">
-      <router-outlet></router-outlet>
-    </div>
+    <footer class="footer">
+      <app-footer></app-footer>
+    </footer>
   </div>
-  <footer class="footer">
-    <app-footer></app-footer>
-  </footer>
 
 </div>

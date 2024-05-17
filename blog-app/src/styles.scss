@@ -2,13 +2,13 @@
 
 $colors: (
   // Standars colors
-  // c - color; b - button
   c_black: #000000,
   c_white: #ffffff,
-  c_red: #f00,
+  c_red: #ff4b4b,
   c_blue: #00f,
   c_cream_white: #f6f6f6,
   c_white_bit-red: #edd2cf,
+  c_green: #4bff4b,
 
   // with opacity
   c_black_with_opacity: #000000d9,
@@ -18,6 +18,9 @@ $colors: (
   c_navigation_with_opacity: #fafafa9e,
 
   b_pink: #ff3478,
+  bg_green_blue: #00ff80,
+  bg_green_aqua_blue: #00ff80,
+  bg_light_blue: #00fbff,
 );
 $fonts_size: (
   tiny: 12px,

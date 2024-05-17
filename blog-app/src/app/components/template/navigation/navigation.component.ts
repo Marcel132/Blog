@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { AccountModule } from '../../account/account.module'
+import { AccountModule } from '../../../modules/account.module'
 import { Router } from '@angular/router'
-import { Admin } from '../../../interface/isAdmin.user'
-import { Writer } from '../../../interface/isWriter.user'
+import { AccountService } from '../../../service/account.service'
+import { AdminService } from '../../../service/admin.service'
 
 @Component({
   selector: 'app-navigation',
@@ -18,40 +18,53 @@ import { Writer } from '../../../interface/isWriter.user'
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent implements OnInit {
-  user: any
+
+  userEmail: string = 'Gość'
+  isGuest: boolean = true
   isAdmin: boolean = false
-  isWritter: boolean = false
-  userEmail: string = ''
+  isWriter: boolean = false
 
-  constructor(private router: Router) {}
 
-  ngOnInit() {
-    if (typeof(Storage) !== "undefined") {
-      const userData = localStorage.getItem('user') // Create in local storage when user logs in or singup
-      if (userData) {
-        this.user = JSON.parse(userData)
-        this.userEmail = this.user.email
-        const adminInArray = Admin.find(u => u.email === this.user.email) // Find the admin in the array
-        const writterInArray = Writer.find(u => u.email === this.user.email)
+  constructor(
+    private router: Router,
+    private accountService: AccountService,
+    private adminService: AdminService
+  ) {}
 
-        if(adminInArray && adminInArray.isAdmin) {
+  async ngOnInit() {
+    //Check local storage
+    let user: any = await this.accountService.userLocalStorage('userSession')
+    if(user){
+      this.isGuest = false
+      this.userEmail = user.email
+      let userStatus = await this.adminService.checkStatus(this.userEmail)
+      if(userStatus){
+
+        const isAdmin = userStatus.isAdmin
+        const isWriter = userStatus.isWriter
+        const isUser = userStatus.isUser
+
+        if(isAdmin === true){
           this.isAdmin = true
+          this.isGuest = false
+
+        } else if(isWriter === true){
+          this.isWriter = true
+          this.isGuest = false
+
+
+        } else if(isUser == "Użytkownik"){
+          this.isGuest = false
         }
-        else if (writterInArray && writterInArray.isWriter){
-          this.isWritter = true
-        }
-        else {
-          this.isWritter = false
-          this.isAdmin = false
-        }
-      } else {
-        this.userEmail = "Gość"
+      }
+      else if(user.email){
+        this.isGuest = false
       }
     }
   }
   LogoutButton() {
     this.router.navigate(['/'])
-    localStorage.clear()
+    localStorage.removeItem('userSession')
     setTimeout(() => {window.location.reload()}, 100)
   }
 }
