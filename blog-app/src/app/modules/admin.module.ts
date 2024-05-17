@@ -5,6 +5,8 @@ import { CreateBlogComponent } from '../components/admin/create-blog/create-blog
 import { AdminService } from '../service/admin.service';
 import { UsersComponent } from '../components/admin/users/users.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostsService } from '../service/posts.service';
 
 
 
@@ -17,6 +19,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     AdminDashboardComponent,
@@ -24,7 +28,8 @@ import { RouterModule } from '@angular/router';
     UsersComponent,
   ],
   providers: [
-    AdminService
+    AdminService,
+    PostsService
   ]
 })
 export class AdminModule { }

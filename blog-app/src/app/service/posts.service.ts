@@ -22,4 +22,8 @@ export class PostsService {
       map((posts: any) => posts[0])
     )
   }
+
+  addPost(data: any) {
+    return this.firestore.collection('posts').doc(data.blog_title).set(data);
+  }
 }

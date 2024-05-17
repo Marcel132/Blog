@@ -13,6 +13,7 @@
 .posts {
   width: 275px;
   height: 350px;
+  padding: 1rem;
   box-shadow: 1px 1px 24px map-get($colors, c_cream_white);
   background-color: map-get($colors, c_white);
 }
@@ -30,7 +31,8 @@
   overflow: hidden;
 
   h4 {
-    margin: 1rem;
+    margin: 1rem 0;
+    text-align: left;
     text-wrap: nowrap;
     font-size: map-get($fonts_size, header-tiny);
 
@@ -46,7 +48,8 @@
   }
 
   p {
-  font-size: map-get($fonts_size, small);
+    font-size: map-get($fonts_size, small);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 }
 
@@ -67,7 +70,8 @@
 
   &:hover{
     background-position: left;
-    color: map-get($colors, c_cream_white);
+    font-weight: 700;
+    // color: map-get($colors, c_cream_white);
     opacity: .8;
   }
 }
