@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PostsService } from '../../../service/posts.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class CreateBlogComponent {
 
   constructor(
     private postsService: PostsService,
+    private router: Router,
   ){}
 
 
@@ -52,5 +54,12 @@ export class CreateBlogComponent {
     }).catch((error) => {
       console.log('Error' + error)
     })
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent){
+    if(event.key === 'Escape'){
+      this.router.navigate(['/admin'])
+    }
   }
 }
