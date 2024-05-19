@@ -21,7 +21,7 @@
       <div class="option-list-user" *ngIf="isGuest === false">
         <li class="account-option-list"><a routerLink='/dashboard'>Konto</a></li>
         <li class="account-option-list" *ngIf='isAdmin === true || isWriter === true'><a routerLink='/admin'>Admin</a></li>
-        <li class="account-option-list"><a (click)="LogoutButton()">Wyloguj się</a></li>
+        <li class="account-option-list"><a (click)="logoutButton()">Wyloguj się</a></li>
       </div>
     </ul>
   </div>

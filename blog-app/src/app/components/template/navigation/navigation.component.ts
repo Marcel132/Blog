@@ -5,6 +5,7 @@ import { AccountModule } from '../../../modules/account.module'
 import { Router } from '@angular/router'
 import { AccountService } from '../../../service/account.service'
 import { AdminService } from '../../../service/admin.service'
+import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 @Component({
   selector: 'app-navigation',
@@ -28,7 +29,8 @@ export class NavigationComponent implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private auth: AngularFireAuth
   ) {}
 
   async ngOnInit() {
@@ -62,7 +64,8 @@ export class NavigationComponent implements OnInit {
       }
     }
   }
-  LogoutButton() {
+  logoutButton() {
+    this.auth.signOut();
     this.router.navigate(['/'])
     localStorage.removeItem('userSession')
     setTimeout(() => {window.location.reload()}, 100)
