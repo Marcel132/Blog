@@ -1,11 +1,13 @@
 @import '../../../styles.scss';
 
+.f-container {
+  width: 98vw;
+}
 .admin-wrapper{
   width: 80%;
   margin: 2rem auto;
   padding: 2rem;
-  box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
-  background-color: map-get($colors, c_white);
+  background-color: inherit;
 }
 .admin-content {
   width: 100%;

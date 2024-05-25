@@ -1,5 +1,6 @@
 @import '../../../../styles.scss';
 .f-container{
+  width: 98vw;
   .f-wrapper {
     box-shadow: 1px 1px 24px map-get($colors, c_cream_white);
   }

@@ -16,6 +16,7 @@
     justify-content: center;
     flex-wrap: wrap;
     box-shadow: 1px 1px 24px map-get($colors, c_white);
+    background-color: map-get($colors, c_white);
 
     input[type="submit"] {
       width: 100%;
