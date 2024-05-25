@@ -1,3 +1,5 @@
+@import '../../../../styles.scss';
+
 .footer-menu-parts {
   display: flex;
   align-items: center;
@@ -7,6 +9,9 @@
   .nav-list-item{
     margin: 1rem 0;
     letter-spacing: 1px;
+    a {
+      color: map-get($colors, c_white);
+    }
   }
 }
 

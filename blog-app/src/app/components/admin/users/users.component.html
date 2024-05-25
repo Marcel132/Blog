@@ -1,2 +1,34 @@
-<div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
-
+<div class="users-container">
+  <div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
+  <div class="users-wrapper">
+    <div class="search-bar">
+      <div class="sort-icon">
+        <button (click)='sortingData()' *ngIf="sortingAsc"><img src="../../../../assets/img/sort-alpha-down.svg" alt="sortingAsc" title='Sortowanie A-Z'></button>
+        <button (click)="sortingData()" *ngIf="!sortingAsc"><img src="../../../../assets/img/sort-alpha-down-alt.svg" alt="sortingDesc" title='Sortowanie Z-A'></button>
+      </div>
+      <input
+      type="text"
+      name="search-bar"
+      id="search-bar"
+      placeholder='Wyszukaj...'
+      (input)="onSearch($event)"
+      >
+    </div>
+    <div class="users-data">
+      <div class="users-rows">
+        <div class="user-section">
+          <h6 class='users-email'>Email</h6>
+          <h6 class='users-created-at'>Data utworzenia</h6>
+          <h6 class='users-uid'>ID</h6>
+          <h6 class='users-status'>Status</h6>
+        </div>
+        <div class="user-section" *ngFor="let data of filteredData">
+          <span class='users-data-item users-email'> {{data.Email}} </span>
+          <span class='users-data-item users-created-at'> {{data.CreatedAt}} </span>
+          <span class='users-data-item users-uid'> {{data.uid}} </span>
+          <span class='users-data-item users-status'> {{data.Status}} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

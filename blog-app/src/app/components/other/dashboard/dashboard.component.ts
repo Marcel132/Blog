@@ -56,6 +56,8 @@ export class DashboardComponent implements OnInit{
         } else {
           this.userStatus = 'Użytkownik'
         }
+
+        console.log(this.userStatus)
       }
     } else {
 

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AccountService } from './account.service';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -31,4 +30,7 @@ export class AdminService {
     this.isWriter = writer
   }
 
+  getUserData() {
+    return this.firestore.collection('users').valueChanges()
+  }
 }
