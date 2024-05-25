@@ -1,12 +1,12 @@
 <div class="app-container">
-
   <div class="wrapper">
+    <header class="logo">
+      <h1><a routerLink='/'>Blog</a></h1>
+    </header>
     <nav class="navigation">
       <app-navigation></app-navigation>
     </nav>
     <div class="blogs-box">
-      <div class="list-box">
-      </div>
       <div class="content-box">
         <router-outlet></router-outlet>
       </div>
@@ -15,5 +15,4 @@
       <app-footer></app-footer>
     </footer>
   </div>
-
 </div>

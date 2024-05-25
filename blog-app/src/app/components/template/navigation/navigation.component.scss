@@ -1,123 +1,99 @@
 @import '../../../../styles.scss';
-.navigation-menu {
-  width: 100%;
+
+.navigation-menu{
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 100%;
-  gap: 2rem;
+  flex-direction: column;
+
+  img {
+    width: 3rem;
+    margin: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+.option-list {
+  display: flex;
+  flex-direction: column;
+  background: map-get($colors, c_navigation);
+  padding: 1rem;
+  min-height: 90vh;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  gap: 1rem;
 }
 .nav-list {
   display: flex;
+  flex-direction: column;
+}
+.list-item {
+  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  font-size: map-get($fonts_size, normal);
 
-
-  .nav-list-item {
-    margin: 0 1rem;
-    opacity: 1;
-    transition: all .3s ease-in-out;
-    letter-spacing: 1px;
-    &:hover{
-      opacity: .8;
-      transform: rotate(-4deg);
-
-      &:first-child{
-        transform: rotate(4deg);
-      }
-    }
+  img{
+    width: 1.4rem;
   }
 }
 
-.nav-img {
-  width: 150%;
-}
-.account-options {
-  display: none;
-  position: absolute;
-  max-width: 170px;
-  background-color: map-get($colors, c_navigation);
-  padding: 1rem;
-  z-index: 1;
-  overflow: hidden;
-  border-radius: 25px 25px 25px 25px;
-  box-shadow: 3px 3px 8px map-get($colors, c_black_with_opacity);
-  transform: translateX(-10%);
-}
-.account:hover .account-options {
-  display: block;
-}
-.account-option-list {
-  width: 150%;
-  margin: .5rem 1.5rem .5rem 0;
-  opacity: 1;
-  padding-bottom: 0.4rem;
-
-  &:hover {
-    opacity: .8;
-  }
-
-}
-.guest-name-box {
-  max-width: 170px;
+.guest-name {
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
-  padding-bottom: 0.4rem;
+  padding: .8rem;
   border-bottom: 1px solid map-get($colors, c_black_with_opacity);
+  font-size: map-get($fonts_size, small);
 
   p{
-    padding-left: 100%;
+    font-size: map-get($fonts_size, normal);
+    padding-left: 110%;
     animation: guest 6s linear infinite;
     &:hover{
       opacity: .8;
-      animation-play-state: paused;
     }
   }
 
   @keyframes guest {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-150%, 0); }
-    100% { transform: translate(-300%, 0); }
-  }
-}
-.guest-name{
-  font-size: map-get($fonts_size, small);
-}
-
-@media screen and (max-width: 1120px) {
-  .account-options {
-    transform: translateX(-30%);
+    0% { transform: translate(0%, 0); }
+    50% { transform: translate(-110%, 0); }
+    100% { transform: translate(-220%, 0); }
   }
 }
 
-@media screen and (max-width: 870px) {
-  .navigation-menu {
-    gap: 1rem;
+.hidden {
+  display: none;
+  overflow: hidden;
+  animation: animation-off .4s linear forwards;
+}
+
+@keyframes animation-off {
+  0% {
+    transform: translate(0, 0);
+    display: block;
+    width: 288px;
   }
-  .logo {
-    display: none;
-  }
-  .account-options {
-    border-radius: 25px 25px 25px 25px;
-    transform: translateX(-40%);
+  100% {
+    transform: translate(-100%, 0);
+    display: block;
+    width: 0;
   }
 }
-@media screen and (max-width: 600px) {
-  .account-options {
-    transform: translateX(-60%);
-  }
+.active {
+  display: block;
+  width: 288px;
+  height: 100%;
+  animation: animation-on .4s linear;
 }
-@media screen and (max-width: 450px) {
-  .account-options {
-    border-radius: 25px 10px 25px 25px;
-    transform: translateX(-80%);
-  }
-}
-@media screen and (max-width: 370px) {
-  .account-options {
-    border-radius: 25px 10px 25px 25px;
-    transform: translateX(-100%);
-  }
+@keyframes animation-on {
+  0% { transform: translate(-100%, 0); }
+  100% { transform: translate(0, 0); }
 }
 

@@ -19,6 +19,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent implements OnInit {
+  isHidden: boolean = true;
+  isActive: boolean = false;
 
   userEmail: string = 'Gość'
   isGuest: boolean = true
@@ -63,6 +65,10 @@ export class NavigationComponent implements OnInit {
         this.isGuest = false
       }
     }
+  }
+  handleClass(){
+    this.isActive = !this.isActive
+    this.isHidden = !this.isHidden
   }
   logoutButton() {
     this.auth.signOut();

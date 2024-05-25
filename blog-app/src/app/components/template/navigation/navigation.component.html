@@ -1,16 +1,62 @@
 <div class="navigation-menu">
+  <img src="../../../../assets/img/list.svg" alt="Menu" (click)="handleClass()">
+  <div class="option-list" [class.hidden]='isHidden' [class.active]="isActive">
+    <ul class="list nav-list">
+      <div class="guest-name">
+        <p>{{userEmail}}</p>
+      </div>
+      <li class="list-item nav-list-item" id='home-page'>
+        <img src="../../../../assets/img/house.svg" alt="Home">
+        <a routerLink='/'>Strona Główna</a>
+      </li>
+      <li class="list-item nav-list-item" id='about-us-page'>
+        <img src="../../../../assets/img/text-paragraph.svg" alt="About us">
+        <a routerLink='/about-us'>O nas</a>
+      </li>
+    </ul>
+    <ul class="list account-list" *ngIf="isGuest">
+      <li class="list-item account-list-item">
+        <img src="../../../../assets/img/person-check.svg" alt="Login">
+        <a routerLink='/account/login'>Zaloguj się</a>
+      </li>
+      <li class="list-item account-list-item">
+        <img src="../../../../assets/img/person-add.svg" alt="Sign up">
+        <a routerLink='/account/signup'>Zarejestruj się</a>
+      </li>
+    </ul>
+    <ul class="list user-list" *ngIf="isGuest === false">
+      <li class="list-item user-list-item">
+        <img src="../../../../assets/img/person-circle.svg" alt="Account">
+        <a routerLink='/dashboard'>Konto</a>
+      </li>
+      <li class="list-item user-list-item" *ngIf='isAdmin === true || isWriter === true'>
+        <img src="../../../../assets/img/person-lock.svg" alt="Admin dashboard">
+        <a routerLink='/admin'>Admin</a>
+      </li>
+      <li class="list-item user-list-item">
+        <img src="../../../../assets/img/person-x.svg" alt="Logout">
+        <a (click)="logoutButton()">Wyloguj się</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="navigation-menu">
   <div class="logo">
     <h1><a routerLink='/'>Blog</a></h1>
   </div>
-  <div class="nav-content">
-    <ul class="nav-list">
+  <div class="account" (click)="handleClass()">
+    <ul class="option-list">
       <li class="nav-list-item" id='home-page'><a routerLink='/'>Strona Główna</a></li>
       <li class="nav-list-item" id='about-us-page'><a routerLink='/about-us'>O nas</a></li>
     </ul>
-  </div>
-  <div class="account">
-    <img src="../../../../assets/img/person-circle.svg" alt="Account" id="account-trigger" class='nav-img'>
-    <ul class="account-options">
+    <img src="../../../../assets/img/person-fill.svg" alt="Account" id="account-trigger" class='nav-img'>
+    <ul class="account-options" [class.hidden]='isHidden' [class.active]="isActive">
       <div class="guest-name-box">
         <p class='guest-name'>{{userEmail}}</p>
       </div>
@@ -18,11 +64,11 @@
         <li class="account-option-list"><a routerLink='/account/login'>Zaloguj się</a></li>
         <li class="account-option-list"><a routerLink='/account/signup'>Zarejestruj się</a></li>
       </div>
-      <div class="option-list-user" *ngIf="isGuest === false">
+      <div class="option-list" *ngIf="isGuest === false">
         <li class="account-option-list"><a routerLink='/dashboard'>Konto</a></li>
         <li class="account-option-list" *ngIf='isAdmin === true || isWriter === true'><a routerLink='/admin'>Admin</a></li>
         <li class="account-option-list"><a (click)="logoutButton()">Wyloguj się</a></li>
       </div>
     </ul>
   </div>
-</div>
+</div> -->

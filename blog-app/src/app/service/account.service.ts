@@ -6,6 +6,7 @@ import { Router} from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { SessionService } from './session.service'
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { firstValueFrom } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -69,7 +70,6 @@ export class AccountService {
   // For Signup.component
   // ---------------------
   async onSubmitSignup(email: string, password: string) {
-    let defaultStatus: string = 'Użytkownik'
     this.submitted = true
     if(this.signupForm.valid){
       this.afAuth.createUserWithEmailAndPassword(email, password)
@@ -80,6 +80,10 @@ export class AccountService {
           let userSession: any = await this.userLocalStorage('userSession')
           console.log(userSession)
           if(userSession){
+            let defaultStatus = await this.checkStatus(userSession.email)
+            if(defaultStatus === false){
+              defaultStatus = 'Użytkownik'
+            }
             this.saveUserData(userSession.email, defaultStatus, userSession.uid)
             this.router.navigate(['/'])
             setTimeout(() => {window.location.reload()}, 2000)
@@ -188,4 +192,23 @@ export class AccountService {
     })
   }
 
+  async checkStatus(email: string) {
+    const docRef = this.firestore.collection('status').doc(email)
+    const doc = await firstValueFrom(docRef.get())
+    if(doc && doc !== undefined){
+      const isAdmin = doc.get('isAdmin')
+      const isWriter = doc.get('isWriter')
+      let isUser = 'Użytkownik'
+      if(isAdmin === true){
+        return 'Administrator'
+      }
+      else if(isWriter === true){
+        return 'Pisarz'
+      } else {
+        return isUser
+      }
+    } else {
+      return false
+    }
+  }
 }
