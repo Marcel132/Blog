@@ -24,3 +24,6 @@ Github: url('https://github.com/Marcel132/Blog')
 
 ### Version 0.5
   Version 0.5 is not a branch but this version includes tests of security in firebase
+
+### Version 0.6
+  Version 0.6 contains add small details to code, checking security and adding a comment.
