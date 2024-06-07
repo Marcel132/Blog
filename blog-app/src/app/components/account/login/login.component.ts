@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core'
-import { AccountService } from '../account.service'
+import { AccountService } from '../../../service/account.service'
 import { FormGroup } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,11 @@ import { FormGroup } from '@angular/forms'
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnDestroy {
-  constructor(private accountService: AccountService){ }
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+
+  ){ }
 
   // Here we are using getters to access the email and password form controls from account.service
   get loginForm(): FormGroup { return this.accountService.loginForm }
@@ -26,6 +31,10 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy() {
     this.accountService.submitted = false
     this.accountService.invalidEmailOrPassword = false
+  }
+
+  changePassword() {
+    this.router.navigate(['/reset_password'])
   }
 
 

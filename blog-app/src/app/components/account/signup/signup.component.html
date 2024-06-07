@@ -17,7 +17,7 @@
         Wymagany Email
       </div>
       <!-- If the email is invalid-->
-      <div class="error-box"  *ngIf="email?.errors?.['invalidEmail']">
+      <div class="error-box"  *ngIf="submitted && email?.errors?.['invalidEmail']">
         Błędny Email
       </div>
 
@@ -44,7 +44,7 @@
       </div>
       <!-- Invalid data  -->
       <div class="error-box" *ngIf="submitted && invalidEmailOrPassword">
-        Taki Email już istnieje!
+        Błędny Email lub Hasło
       </div>
       <input type='submit' value='Zarejestruj się'  id='submit-button' [disabled]="signupForm.invalid">
     </form>

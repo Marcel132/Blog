@@ -1,0 +1,93 @@
+<div class="blogs-container">
+  <div class="reset-button" *ngIf="showArrow"><a routerLink="/admin"><img src="../../../assets/img/arrow-left.svg" alt="Return" title='Return'></a></div>
+  <div class="blogs-wrapper">
+    <form class='blogs-form' (ngSubmit)='onSubmit()' #blogForm='ngForm'>
+
+        <div class="content">
+          <label for="blog_title">Tytuł bloga:</label>
+          <textarea
+          type="text"
+          id="blog_title"
+          name="blog_title"
+          [(ngModel)]="blog_title"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="title_1">Podtytuł 1:</label>
+          <textarea
+          type="text"
+          id="title_1"
+          name="title_1"
+          [(ngModel)]="title_1"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="content_1">Zawartość 1:</label>
+          <textarea
+          id="content_1"
+          name="content_1"
+          [(ngModel)]="content_1"
+          ></textarea>
+        </div>
+        <div class="content">
+          <label for="title_2">Podtytuł 2:</label>
+          <textarea
+          type="text"
+          id="title_2"
+          name="title_2"
+          [(ngModel)]="title_2"
+          ></textarea>
+        </div>
+        <div class="content">
+          <label for="content_2">Zawartość 2:</label>
+          <textarea
+          id="content_2"
+          name="content_2"
+          [(ngModel)]="content_2"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="title_3">Podtytuł 3:</label>
+          <textarea
+          type="text"
+          id="title_3"
+          name="title_3"
+          [(ngModel)]="title_3"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="content_3">Zawartość 3:</label>
+          <textarea
+          id="content_3"
+          name="content_3"
+          [(ngModel)]="content_3"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="title_4">Podtytuł 4:</label>
+          <textarea
+          type="text"
+          id="title_4"
+          name="title_4"
+          [(ngModel)]="title_4"
+          ></textarea>
+        </div>
+
+        <div class="content">
+          <label for="content_4">Zawartość 4:</label>
+          <textarea
+          id="content_4"
+          name="content_4"
+          [(ngModel)]="content_4"
+          ></textarea>
+        </div>
+
+      <input type="submit" value="Wyślij"  (click)="onSubmit()">
+    </form>
+  </div>
+</div>

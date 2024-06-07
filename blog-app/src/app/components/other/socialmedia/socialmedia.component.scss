@@ -1,11 +1,9 @@
 @import '../../../../styles.scss';
-.social-media-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 10rem 5rem;
-
+.f-container{
+  width: 98vw;
+  .f-wrapper {
+    box-shadow: 1px 1px 24px map-get($colors, c_cream_white);
+  }
   strong {
     font-weight: normal;
     text-decoration: underline;

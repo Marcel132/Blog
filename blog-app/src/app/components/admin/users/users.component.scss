@@ -1,0 +1,65 @@
+@import '../../../../styles.scss';
+.users-wrapper {
+  width: 100%;
+  padding: 2rem;
+  background-color: map-get($colors, c_white);
+}
+.reset-button {
+  img{
+    width: 1.3rem;
+  }
+}
+.search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0.4rem 0 1rem 0;
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    
+    img{
+      width: 100%;
+    }
+  }
+}
+.users-rows {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.user-section {
+  font-size: map-get($fonts_size, tiny);
+  padding: 1rem;
+  border-bottom: .5px solid map-get($colors, c_black);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  word-wrap: break-word;
+
+  h6 {
+    padding: 0.2rem;
+    font-size: map-get($fonts_size, small);
+  }
+}
+.users-data-item{
+  padding: 0 .4rem;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .users-wrapper {
+    padding: 0;
+  }
+  .user-section {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .users-status{
+    display: none;
+  }
+}

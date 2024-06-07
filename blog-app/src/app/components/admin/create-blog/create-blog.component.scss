@@ -1,0 +1,73 @@
+@import '../../../../styles.scss';
+.blogs-container {
+  width: 100%;
+}
+.blogs-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blogs-form {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: map-get($colors, c_white);
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+}
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  label {
+    text-wrap: nowrap;
+    margin: 0 1rem 0 0;
+  }
+  textarea {
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 10vh;
+    max-height: 20vh;
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+}
+
+.reset-button {
+  img{
+    width: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .blogs-form {
+    padding: 0;
+  }
+  .content {
+    flex-direction: column;
+    text-area {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+}

@@ -1,19 +1,18 @@
-<div class="container">
-
-  <nav class="navigation">
-    <app-navigation></app-navigation>
-  </nav>
-  <div class="blogs-box">
-    <div class="list-box">
+<div class="app-container">
+  <div class="wrapper">
+    <header class="logo">
+      <h1><a routerLink='/'>Blog</a></h1>
+    </header>
+    <nav class="navigation">
+      <app-navigation></app-navigation>
+    </nav>
+    <div class="blogs-box">
+      <div class="content-box">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    <div class="content-box">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="ads-box">
-    </div>
+    <footer class="footer">
+      <app-footer></app-footer>
+    </footer>
   </div>
-  <footer class="footer">
-    <app-footer></app-footer>
-  </footer>
-
 </div>
