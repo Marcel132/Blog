@@ -14,7 +14,8 @@ export class ResetPasswordComponent {
   ) {}
 
   email: string = ''
-  
+
+  // Change password
   changePassword(){
     this.accountService.changePassword(this.email)
   }

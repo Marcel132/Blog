@@ -36,7 +36,7 @@ export class NavigationComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    //Check local storage
+    // Check local storage and update a navigation component when user is logged or not and if user is logged as admin or as writer
     let user: any = await this.accountService.userLocalStorage('userSession')
     if(user){
       this.isGuest = false
@@ -66,10 +66,12 @@ export class NavigationComponent implements OnInit {
       }
     }
   }
+  // Show or hide a navigation bar
   handleClass(){
     this.isActive = !this.isActive
     this.isHidden = !this.isHidden
   }
+  // Logout from database and remove a local storage
   logoutButton() {
     this.auth.signOut();
     this.router.navigate(['/'])

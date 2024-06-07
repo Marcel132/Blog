@@ -15,12 +15,14 @@ export class PostsComponent {
   ){}
   data: any[] = []
 
+  // Get every post from firebase
   ngOnInit() {
   this.postsService.getPosts().subscribe(posts => {
     this.data = posts;
   });
   }
 
+  // For button click, go to the posts with the specified id 
   goToBlog(id: string) {
     this.router.navigate(['/posts', id]);
   }

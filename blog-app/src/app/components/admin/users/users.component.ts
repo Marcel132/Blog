@@ -1,5 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
 import { AdminService } from '../../../service/admin.service'
 
 @Component({
@@ -16,10 +15,10 @@ export class UsersComponent implements OnInit {
   searchingTerms: string = ''
 
   constructor(
-    private router: Router,
     private adminService: AdminService,
   ) {}
 
+  // Take all users data and show them
   async ngOnInit() {
     this.adminService.getUserData().subscribe(data => {
       this.data = data
@@ -28,11 +27,13 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  // Sort data by ascending or descending order
   sortingData() {
     this.sortingAsc = !this.sortingAsc
     this.applyFilters()
   }
 
+  // Search user's data by email, date or uid
   onSearch(event: Event) {
     const target = event.target as HTMLInputElement
     if (target) {
@@ -41,6 +42,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  // Combine filtering and sorting
   applyFilters() {
     let filtered = this.data
 

@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit{
     private adminService: AdminService,
   ){ }
 
-  userName: string = 'Nieznany'
+  userName: string = '-'
   userEmail: string = ''
   userStatus: string = ''
   inputUsername: string = ''
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit{
     uid: '',
   }
 
-
+  // Take email and username from local storage and status from firebase
   async ngOnInit() {
     let user: any = await this.accountService.userLocalStorage('userSession')
     if(user) {
@@ -68,9 +68,12 @@ export class DashboardComponent implements OnInit{
     }
   }
 
+  // Show change name input
   toogleOption(){
     this.changeUsernameOption =  !this.changeUsernameOption
   }
+
+  // Set username in local storage
   setUsername() {
     this.changeUsernameOption = false
     const username = this.inputUsername
@@ -80,15 +83,11 @@ export class DashboardComponent implements OnInit{
     }, 200)
   }
 
-  // async saveData() {
-  //   const user: any = await this.accountService.userLocalStorage('userSession')
-  //   if(user) {
-  //     this.accountService.saveUserData(user.email, this.userStatus, user.uid)
-  //   }
-  // }
+  // Route to change password component
   changePassword() {
     this.router.navigate(['/reset_password'])
   }
+  // Delete user account
   deleteUserAccount() {
     if (this.accountService.deletingUserError){
       this.deletingUserError = true

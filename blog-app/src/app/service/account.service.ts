@@ -1,4 +1,4 @@
-// Here are every function that is using to control the account of the user
+// * Here are every function that is using to control the account of the user
 
 import { Injectable } from '@angular/core'
 import { AbstractControl, FormBuilder, Validators  } from '@angular/forms'
@@ -20,6 +20,7 @@ export class AccountService {
     private router: Router,
     private sessionService: SessionService,
     ) { }
+
 
   // Check if email is valid
   validateEmail(control: AbstractControl) {
@@ -69,6 +70,8 @@ export class AccountService {
   // ---------------------
   // For Signup.component
   // ---------------------
+
+  // If user writes valid data, we will create a new user in database and new session in local storage. In every register we are checking a permission (Every permission we will find in document in database)
   async onSubmitSignup(email: string, password: string) {
     this.submitted = true
     if(this.signupForm.valid){
@@ -102,12 +105,14 @@ export class AccountService {
   // ---------------------
   // For Login.component
   // ---------------------
+
+  // Check a valid data from form and database. If are valid, we create a user local storage and login to website
   async onSubmitLogin(email: string, password: string) {
     // Change the variable on true, when user click signup button
     this.submitted = true
     this.afAuth.signInWithEmailAndPassword(email, password)
     .then(async (Credential) => {
-      // Signed in
+      // Login
       let user = Credential.user
       if (user) {
         this.sessionService.set('userSession', user)
@@ -123,9 +128,7 @@ export class AccountService {
     })
   }
 
-  // ---------------------
-  // For Dashboard.component
-  // ---------------------
+  // Create a new document for every user that signup to the blog
   async saveUserData(email: string, status: string, uid: string) {
     // Take date and time
     let date = new Date()
@@ -154,10 +157,13 @@ export class AccountService {
   // ---------------------
   // For Reset-password.component
   // ---------------------
+
+  // Send a reset password email
   async changePassword(email: string) {
     this.afAuth.sendPasswordResetEmail(email)
   }
 
+  // Delete an user account from the database and clear local storage
   async deleteUserAccount() {
     const user = await this.afAuth.currentUser;
     if(user) {
@@ -174,6 +180,7 @@ export class AccountService {
     }
   }
 
+  // Check if the user has a local storage
   async userLocalStorage(nameStorage: string) {
     return new Promise((resolve, reject) => {
       if(typeof(Storage) !== 'undefined'){
@@ -192,6 +199,7 @@ export class AccountService {
     })
   }
 
+  // Check status and update user status in dashboard
   async checkStatus(email: string) {
     const docRef = this.firestore.collection('status').doc(email)
     const doc = await firstValueFrom(docRef.get())

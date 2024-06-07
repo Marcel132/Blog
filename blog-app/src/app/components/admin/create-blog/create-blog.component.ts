@@ -1,6 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { PostsService } from '../../../service/posts.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,14 +24,15 @@ export class CreateBlogComponent {
 
   constructor(
     private postsService: PostsService,
-    private router: Router,
   ){}
 
 
+  // Generate a random id for post
   generateId(): string {
     return Math.random().toString(36).substring(2);
   }
 
+  // Send data from form to database
   async onSubmit() {
     const blogData: any = {
       blog_title: this.blog_title,

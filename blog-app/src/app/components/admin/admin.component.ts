@@ -31,6 +31,7 @@ export class AdminComponent implements OnInit {
 
 
 
+  // Check user's permissions
   async ngOnInit() {
     let user: any = await this.accountService.userLocalStorage('userSession')
     if(user){
@@ -54,26 +55,29 @@ export class AdminComponent implements OnInit {
 
   }
 
+  // Listen for user's keystrokes
   @HostListener('window:keydown', ['$event'])
   handleOpenWindow(event: KeyboardEvent) {
     const currentRoute = this.router.url
-    switch (event.key) {
+
+    switch(event.key){
       case "Escape": {
         this.router.navigate(['/admin'])
         break
       }
-      case "1": {
-        if(currentRoute === '/admin'){
+    }
+    if(currentRoute === '/admin'){
+      switch (event.key) {
+        case "1": {
           this.router.navigate(['/admin/createblog'])
+          break
         }
-        break
-      }
-      case "2": {
-        if(currentRoute === '/admin'){
+        case "2": {
           this.router.navigate(['admin/users'])
+          break
         }
-        break
       }
     }
+
   }
 }
