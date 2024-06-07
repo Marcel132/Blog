@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    box-shadow: 1px 1px 24px map-get($colors, c_white);
     background-color: map-get($colors, c_white);
 
     input[type="submit"] {
@@ -51,6 +50,12 @@
     max-height: 20vh;
     margin: 1rem 0;
     padding: 1rem;
+  }
+}
+
+.reset-button {
+  img{
+    width: 1.3rem;
   }
 }
 

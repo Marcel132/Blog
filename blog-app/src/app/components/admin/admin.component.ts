@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminModule } from '../../modules/admin.module';
 import { AccountService } from '../../service/account.service';
@@ -22,11 +22,14 @@ export class AdminComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private adminService: AdminService,
+    private router: Router,
   ) {}
 
   showArrow: boolean = false
   isAdmin: boolean = false
   isWriter: boolean = false
+
+
 
   async ngOnInit() {
     let user: any = await this.accountService.userLocalStorage('userSession')
@@ -46,6 +49,30 @@ export class AdminComponent implements OnInit {
         }
 
         this.adminService.setUserData(isAdmin, isWriter)
+      }
+    }
+
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleOpenWindow(event: KeyboardEvent) {
+    const currentRoute = this.router.url
+    switch (event.key) {
+      case "Escape": {
+        this.router.navigate(['/admin'])
+        break
+      }
+      case "1": {
+        if(currentRoute === '/admin'){
+          this.router.navigate(['/admin/createblog'])
+        }
+        break
+      }
+      case "2": {
+        if(currentRoute === '/admin'){
+          this.router.navigate(['admin/users'])
+        }
+        break
       }
     }
   }
