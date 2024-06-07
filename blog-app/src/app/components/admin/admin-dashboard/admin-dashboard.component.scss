@@ -12,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 1px 1px 24px map-get($colors, c_white_bit-red);
     background-color: map-get($colors, c_white);
 
     span {

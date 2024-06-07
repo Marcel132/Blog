@@ -63,10 +63,4 @@ export class UsersComponent implements OnInit {
     this.filteredData = filtered
   }
 
-  @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent){
-    if(event.key === 'Escape'){
-      this.router.navigate(['/admin'])
-    }
-  }
 }
