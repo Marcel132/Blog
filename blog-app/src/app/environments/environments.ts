@@ -1,3 +1,4 @@
+//! Firebase configuration
 export const environment = {
   production: false,
   firebaseConfig: {

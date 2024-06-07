@@ -20,7 +20,7 @@ import { AppModule } from './app.module';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  // Here is the navigation code. When someone clicks on the link, it should take them to the top of the page.
+  // Here is the code for users when someone clicks on the link, it should take him to the top of the page.
   constructor(private router: Router) {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
